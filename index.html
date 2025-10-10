@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<base href="https://4msdzzymqt5am.ok.kimi.link">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alain Halbouny - Mechanical Engineer & ML Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.birds.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #1e3a8a;
+            --gold: #d97706;
+            --slate: #475569;
+            --light-slate: #64748b;
+            --cream: #fefce8;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .glass-card {
+            background: rgba(30, 41, 59, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            background: rgba(30, 41, 59, 0.5);
+            border-color: rgba(217, 119, 6, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.2) 0%, rgba(245, 158, 11, 0.2) 100%);
+            border: 1px solid rgba(217, 119, 6, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.4) 0%, rgba(245, 158, 11, 0.4) 100%);
+            transform: scale(1.05);
+        }
+        
+        .project-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%);
+            border-left: 4px solid #d97706;
+            transition: all 0.4s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 20px 40px rgba(217, 119, 6, 0.2);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            background: #d97706;
+            border-radius: 50%;
+            border: 3px solid #1e293b;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 0;
+            top: 24px;
+            bottom: -24px;
+            width: 2px;
+            background: linear-gradient(to bottom, #d97706, rgba(217, 119, 6, 0.3));
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(148, 163, 184, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nav-dot.active {
+            background: #d97706;
+            transform: scale(1.2);
+        }
+        
+        .section {
+            min-height: 100vh;
+            padding: 80px 0;
+        }
+        
+        #vanta-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div id="vanta-bg"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-xl font-bold text-amber-500">Alain Halbouny</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#hero" class="text-slate-300 hover:text-amber-500 transition-colors">About</a>
+                    <a href="#skills" class="text-slate-300 hover:text-amber-500 transition-colors">Skills</a>
+                    <a href="#projects" class="text-slate-300 hover:text-amber-500 transition-colors">Projects</a>
+                    <a href="#experience" class="text-slate-300 hover:text-amber-500 transition-colors">Experience</a>
+                    <a href="#contact" class="text-slate-300 hover:text-amber-500 transition-colors">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-amber-500">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="section flex items-center justify-center relative">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="fade-in">
+                <div class="text-sm text-amber-500 font-medium mb-4 tracking-wide uppercase">
+                    Mechanical Engineer & Machine Learning Specialist
+                </div>
+                <h1 class="hero-title text-5xl md:text-7xl font-bold leading-tight mb-6">
+                    Alain<br>Halbouny
+                </h1>
+                <p class="text-xl text-slate-300 mb-8 leading-relaxed">
+                    Passionate mechanical engineer with expertise in advanced manufacturing, computational modeling, 
+                    and machine learning. Currently pursuing cutting-edge research in thermal propulsion systems 
+                    and AI applications at McGill University.
+                </p>
+                <div class="flex flex-wrap gap-4 mb-8">
+                    <div class="skill-tag px-4 py-2 rounded-full text-sm font-medium">
+                        <i class="fas fa-robot mr-2"></i>Machine Learning
+                    </div>
+                    <div class="skill-tag px-4 py-2 rounded-full text-sm font-medium">
+                        <i class="fas fa-cogs mr-2"></i>CAD/CAM
+                    </div>
+                    <div class="skill-tag px-4 py-2 rounded-full text-sm font-medium">
+                        <i class="fas fa-fire mr-2"></i>Thermal Systems
+                    </div>
+                    <div class="skill-tag px-4 py-2 rounded-full text-sm font-medium">
+                        <i class="fas fa-chart-line mr-2"></i>Data Analysis
+                    </div>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="mailto:alainhalbouny@gmail.com" class="bg-amber-500 hover:bg-amber-600 text-slate-900 px-6 py-3 rounded-lg font-medium transition-all transform hover:scale-105">
+                        <i class="fas fa-envelope mr-2"></i>Get In Touch
+                    </a>
+                    <a href="#projects" class="border border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-slate-900 px-6 py-3 rounded-lg font-medium transition-all">
+                        View Projects
+                    </a>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="floating-element">
+                    <div class="glass-card rounded-2xl p-8">
+                        <div class="text-center mb-6">
+                            <div class="w-32 h-32 mx-auto bg-gradient-to-br from-amber-500 to-amber-600 rounded-full flex items-center justify-center text-4xl font-bold text-slate-900 mb-4">
+                                AH
+                            </div>
+                            <h3 class="text-xl font-semibold text-amber-500">Quick Facts</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-graduation-cap text-amber-500 mr-3"></i>
+                                <span>McGill University</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-amber-500 mr-3"></i>
+                                <span>Montreal, Canada</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-language text-amber-500 mr-3"></i>
+                                <span>Trilingual (FR/EN/AR)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-award text-amber-500 mr-3"></i>
+                                <span>GPA: 3.6/4.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    <span class="text-amber-500">Technical</span> Expertise
+                </h2>
+                <p class="text-xl text-slate-300 max-w-3xl mx-auto">
+                    A comprehensive skill set spanning mechanical engineering, computational modeling, 
+                    and artificial intelligence applications.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Engineering Tools -->
+                <div class="glass-card rounded-xl p-6 fade-in">
+                    <div class="text-amber-500 text-3xl mb-4">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Engineering Tools</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span>SolidWorks</span>
+                            <div class="w-24 h-2 bg-slate-700 rounded-full">
+                                <div class="w-20 h-2 bg-amber-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Mastercam</span>
+                            <div class="w-24 h-2 bg-slate-700 rounded-full">
+                                <div class="w-18 h-2 bg-amber-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Abaqus</span>
+                            <div class="w-24 h-2 bg-slate-700 rounded-full">
+                                <div class="w-19 h-2 bg-amber-500 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manufacturing & Design -->
+                <div class="glass-card rounded-xl p-6 fade-in">
+                    <div class="text-amber-500 text-3xl mb-4">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Manufacturing & Design</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 rounded-full text-sm">CNC Machining</span>
+                        <span class="skill-tag px-3 py-1 rounded-full text-sm">3D Printing</span>
+                        <span class="skill-tag px-3 py-1 rounded-full text-sm">DFMA</span>
+                        <span class="skill-tag px-3 py-1 rounded-full text-sm">GD&T</span>
+                    </div>
+                </div>
+
+                <!-- Data Analysis & ML -->
+                <div class="glass-card rounded-xl p-6 fade-in">
+                    <div class="text-amber-500 text-3xl mb-4">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Data Analysis & ML</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="text-sm text-slate-400 mb-1">Python (PyTorch, TensorFlow)</div>
+                            <div class="w-full h-2 bg-slate-700 rounded-full">
+                                <div class="w-20 h-2 bg-amber-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-sm text-slate-400 mb-1">MATLAB</div>
+                            <div class="w-full h-2 bg-slate-700 rounded-full">
+                                <div class="w-18 h-2 bg-amber-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-sm text-slate-400 mb-1">NumPy/SciPy</div>
+                            <div class="w-full h-2 bg-slate-700 rounded-full">
+                                <div class="w-19 h-2 bg-amber-500 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="glass-card rounded-xl p-6 fade-in">
+                    <div class="text-amber-500 text-3xl mb-4">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Certifications</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-amber-500 mr-2"></i>
+                            <span class="text-sm">Stanford ML Specialization</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-amber-500 mr-2"></i>
+                            <span class="text-sm">KDB+/q Developer Level 3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="glass-card rounded-xl p-6 fade-in">
+                    <div class="text-amber-500 text-3xl mb-4">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Languages</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span>French</span>
+                            <span class="text-amber-500 text-sm">Native</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>English</span>
+                            <span class="text-amber-500 text-sm">Fluent</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Arabic</span>
+                            <span class="text-amber-500 text-sm">Fluent</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Spanish</span>
+                            <span class="text-slate-400 text-sm">Basic</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="glass-card rounded-xl p-6 fade-in">
+                    <div class="text-amber-500 text-3xl mb-4">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Core Competencies</h3>
+                    <div class="space-y-2">
+                        <div class="text-sm">Project Management</div>
+                        <div class="text-sm">Team Leadership</div>
+                        <div class="text-sm">Technical Communication</div>
+                        <div class="text-sm">Problem Solving</div>
+                        <div class="text-sm">Cross-functional Collaboration</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Featured <span class="text-amber-500">Projects</span>
+                </h2>
+                <p class="text-xl text-slate-300 max-w-3xl mx-auto">
+                    Innovative engineering solutions and cutting-edge machine learning applications 
+                    that showcase technical expertise and creative problem-solving.
+                </p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Machine Learning Project -->
+                <div class="project-card rounded-xl p-8 fade-in">
+                    <div class="flex items-start justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-amber-500 mb-2">Machine Learning Personal Project</h3>
+                            <div class="flex items-center text-slate-400 mb-2">
+                                <i class="fas fa-calendar mr-2"></i>
+                                <span>May 2025 - Ongoing</span>
+                                <span class="ml-4 px-3 py-1 bg-amber-500/20 text-amber-500 rounded-full text-sm">Personal Project</span>
+                            </div>
+                        </div>
+                        <div class="text-4xl text-amber-500">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        Independently building and optimizing machine learning models for practical applications, 
+                        focusing on foundational understanding and implementation from scratch.
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-3">
+                            <h4 class="font-semibold text-amber-400">Key Achievements:</h4>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-amber-500 mr-2 mt-1"></i>
+                                    <span class="text-sm">Implemented Multi-Layer Perceptron from scratch using NumPy for MNIST digit classification</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-amber-500 mr-2 mt-1"></i>
+                                    <span class="text-sm">Developing transformer-based language model to explore attention mechanisms</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">Python</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">NumPy</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">PyTorch</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">TensorFlow</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">MNIST</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">Transformers</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Laser Powered Rocket -->
+                <div class="project-card rounded-xl p-8 fade-in">
+                    <div class="flex items-start justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-amber-500 mb-2">Laser Powered Rocket - Team Project</h3>
+                            <div class="flex items-center text-slate-400 mb-2">
+                                <i class="fas fa-calendar mr-2"></i>
+                                <span>Sep 2023 - Apr 2024</span>
+                                <span class="ml-4 px-3 py-1 bg-amber-500/20 text-amber-500 rounded-full text-sm">Team Project</span>
+                            </div>
+                        </div>
+                        <div class="text-4xl text-amber-500">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        Developed a fully functional laser thermal propulsion test apparatus for research applications, 
+                        featuring advanced thermal management and precision engineering.
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-3">
+                            <h4 class="font-semibold text-amber-400">Technical Highlights:</h4>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-amber-500 mr-2 mt-1"></i>
+                                    <span class="text-sm">Designed aluminum ionization chamber rated for 50 bars with 350W continuous laser</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-amber-500 mr-2 mt-1"></i>
+                                    <span class="text-sm">Managed 15,000°K plasma core using heat sinks and regenerative cooling</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-amber-500 mr-2 mt-1"></i>
+                                    <span class="text-sm">Led manufacturing, prototyping, and successful thrust measurement</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">SolidWorks</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">DFMA</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">GD&T</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">Heat Transfer</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">3D Printing</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">Project Management</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auxiliary Transmission Box -->
+                <div class="project-card rounded-xl p-8 fade-in">
+                    <div class="flex items-start justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-amber-500 mb-2">Auxiliary Transmission Box - Team Project</h3>
+                            <div class="flex items-center text-slate-400 mb-2">
+                                <i class="fas fa-calendar mr-2"></i>
+                                <span>Mar - Apr 2022</span>
+                                <span class="ml-4 px-3 py-1 bg-amber-500/20 text-amber-500 rounded-full text-sm">Team Project</span>
+                            </div>
+                        </div>
+                        <div class="text-4xl text-amber-500">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        Designed and optimized a double-reduction auxiliary AGMA standard spur gear transmission box 
+                        for small aircraft applications under strict dimensional constraints.
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-3">
+                            <h4 class="font-semibold text-amber-400">Engineering Excellence:</h4>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-amber-500 mr-2 mt-1"></i>
+                                    <span class="text-sm">Conducted detailed AGMA force, stress, and fatigue analysis</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-amber-500 mr-2 mt-1"></i>
+                                    <span class="text-sm">Engineered shafts using FBD and stress analysis</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-amber-500 mr-2 mt-1"></i>
+                                    <span class="text-sm">Applied iterative optimization using Python scripts</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">AGMA Standards</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">Gear Design</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">Python</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">Fatigue Analysis</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">Optimization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Structural Bracket Design -->
+                <div class="project-card rounded-xl p-8 fade-in">
+                    <div class="flex items-start justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-amber-500 mb-2">Structural Bracket Design - Team Project</h3>
+                            <div class="flex items-center text-slate-400 mb-2">
+                                <i class="fas fa-calendar mr-2"></i>
+                                <span>Sep - Dec 2022</span>
+                                <span class="ml-4 px-3 py-1 bg-amber-500/20 text-amber-500 rounded-full text-sm">Team Project</span>
+                            </div>
+                        </div>
+                        <div class="text-4xl text-amber-500">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        Designed a lightweight 2D acrylic structural bracket to maximize strength and achieve target stiffness 
+                        through advanced FEA analysis and optimization techniques.
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-3">
+                            <h4 class="font-semibold text-amber-400">Optimization Results:</h4>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-amber-500 mr-2 mt-1"></i>
+                                    <span class="text-sm">Conducted FEA analysis in ABAQUS with material test calibration</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-amber-500 mr-2 mt-1"></i>
+                                    <span class="text-sm">Optimized triangular mesh (1000 nodes) for critical stress areas</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-amber-500 mr-2 mt-1"></i>
+                                    <span class="text-sm">Minimized weight while maintaining structural integrity</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">ABAQUS</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">FEA</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">SolidWorks</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">Structural Analysis</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-xs">Optimization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Professional <span class="text-amber-500">Experience</span>
+                </h2>
+                <p class="text-xl text-slate-300 max-w-3xl mx-auto">
+                    Diverse experience spanning engineering, sales, community development, 
+                    and technical support across multiple industries and countries.
+                </p>
+            </div>
+
+            <div class="relative">
+                <div class="timeline-line"></div>
+                <div class="space-y-12">
+                    <!-- F1 Grand Prix -->
+                    <div class="relative pl-12 timeline-item fade-in">
+                        <div class="glass-card rounded-xl p-6">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                <div>
+                                    <h3 class="text-xl font-bold text-amber-500">Merchandise Sales Representative</h3>
+                                    <p class="text-slate-300">V12 Trackside F1 Store, Formula 1 Grand Prix</p>
+                                </div>
+                                <div class="text-slate-400 text-sm mt-2 md:mt-0">
+                                    <i class="fas fa-map-marker-alt mr-1"></i>Montreal, Canada • Jun 2023
+                                </div>
+                            </div>
+                            <p class="text-slate-300 mb-4">
+                                Interacted with diverse audiences, enhanced brand promotion, and efficiently managed inventory 
+                                in a fast-paced, high-energy sales environment at the 2023 Montreal F1 Grand Prix.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag px-3 py-1 rounded-full text-xs">Sales</span>
+                                <span class="skill-tag px-3 py-1 rounded-full text-xs">Customer Service</span>
+                                <span class="skill-tag px-3 py-1 rounded-full text-xs">Inventory Management</span>
+                                <span class="skill-tag px-3 py-1 rounded-full text-xs">Brand Promotion</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GVI-Org -->
+                    <div class="relative pl-12 timeline-item fade-in">
+                        <div class="glass-card rounded-xl p-6">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                <div>
+                                    <h3 class="text-xl font-bold text-amber-500">Supervised Voluntary Work Experience</h3>
+                                    <p class="text-slate-300">GVI-Org</p>
+                                </div>
+                                <div class="text-slate-400 text-sm mt-2 md:mt-0">
+                                    <i class="fas fa-map-marker-alt mr-1"></i>Quepos, Costa Rica • Jul 2019
+                                </div>
+                            </div>
+                            <p class="text-slate-300 mb-4">
+                                Contributed to building a recreation/learning center for underprivileged children on El Cocal island, 
+                                emphasizing community development and infrastructure improvement through teamwork and communication.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag px-3 py-1 rounded-full text-xs">Community Development</span>
+                                <span class="skill-tag px-3 py-1 rounded-full text-xs">Infrastructure</span>
+                                <span class="skill-tag px-3 py-1 rounded-full text-xs">Teamwork</span>
+                                <span class="skill-tag px-3 py-1 rounded-full text-xs">Cross-cultural Communication</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ABB & GTAT -->
+                    <div class="relative pl-12 timeline-item fade-in">
+                        <div class="glass-card rounded-xl p-6">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                <div>
+                                    <h3 class="text-xl font-bold text-amber-500">Introductory Programs</h3>
+                                    <p class="text-slate-300">ABB for Electrical Industries & GT Advanced Technologies</p>
+                                </div>
+                                <div class="text-slate-400 text-sm mt-2 md:mt-0">
+                                    <i class="fas fa-map-marker-alt mr-1"></i>Cairo, Egypt • Jul 2019
+                                </div>
+                            </div>
+                            <p class="text-slate-300 mb-4">
+                                Collaborated across departments, strengthened interpersonal skills, and gained hands-on exposure 
+                                to electrical engineering projects, project management, supply chain operations, and solar energy fundamentals.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag px-3 py-1 rounded-full text-xs">Electrical Engineering</span>
+                                <span class="skill-tag px-3 py-1 rounded-full text-xs">Project Management</span>
+                                <span class="skill-tag px-3 py-1 rounded-full text-xs">Supply Chain</span>
+                                <span class="skill-tag px-3 py-1 rounded-full text-xs">Solar Energy</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GoPro Internship -->
+                    <div class="relative pl-12 timeline-item fade-in">
+                        <div class="glass-card rounded-xl p-6">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                <div>
+                                    <h3 class="text-xl font-bold text-amber-500">Internship</h3>
+                                    <p class="text-slate-300">GoPro at ABM</p>
+                                </div>
+                                <div class="text-slate-400 text-sm mt-2 md:mt-0">
+                                    <i class="fas fa-map-marker-alt mr-1"></i>Dubai, UAE • Feb 2017
+                                </div>
+                            </div>
+                            <p class="text-slate-300 mb-4">
+                                Collaborated with the tech department of the leading GoPro camera distributor in MENA and GCC regions. 
+                                Gained foundational sales and marketing skills while handling advertising, market research, 
+                                technical product support, and inventory management.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag px-3 py-1 rounded-full text-xs">Technical Support</span>
+                                <span class="skill-tag px-3 py-1 rounded-full text-xs">Market Research</span>
+                                <span class="skill-tag px-3 py-1 rounded-full text-xs">Sales & Marketing</span>
+                                <span class="skill-tag px-3 py-1 rounded-full text-xs">Inventory Management</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    <span class="text-amber-500">Education</span> & Achievements
+                </h2>
+                <p class="text-xl text-slate-300 max-w-3xl mx-auto">
+                    Comprehensive engineering education with distinguished academic performance 
+                    and recognized excellence in mechanical engineering.
+                </p>
+            </div>
+
+            <div class="glass-card rounded-xl p-8 fade-in">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="md:col-span-2">
+                        <div class="flex items-center mb-6">
+                            <div class="text-4xl text-amber-500 mr-4">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-amber-500">McGill University</h3>
+                                <p class="text-slate-300">Faculty of Engineering</p>
+                                <p class="text-slate-400">Montreal, Canada • Sep 2020 - Feb 2025</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="text-xl font-semibold mb-3">Bachelor of Engineering in Mechanical Engineering</h4>
+                            <div class="flex items-center mb-4">
+                                <span class="text-amber-500 font-semibold">GPA: 3.6/4.0</span>
+                                <span class="mx-4 text-slate-400">|</span>
+                                <span class="text-slate-300">Dean's Honor List</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <h4 class="font-semibold text-amber-400 mb-3">Scholarships & Awards</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <i class="fas fa-award text-amber-500 mr-2"></i>
+                                    <span>Professor Bill Williams Memorial Scholarship</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-award text-amber-500 mr-2"></i>
+                                    <span>John Howard Ambrose Scholarships (2020-2021)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-semibold text-amber-400 mb-4">Key Coursework</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-center">
+                                <i class="fas fa-book text-slate-400 mr-2"></i>
+                                <span>Thermodynamics</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-book text-slate-400 mr-2"></i>
+                                <span>Mechanical Design</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-book text-slate-400 mr-2"></i>
+                                <span>Fluid Mechanics</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-book text-slate-400 mr-2"></i>
+                                <span>DFMA & GD&T</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-book text-slate-400 mr-2"></i>
+                                <span>Numerical Methods</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-book text-slate-400 mr-2"></i>
+                                <span>Dynamics</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-book text-slate-400 mr-2"></i>
+                                <span>Heat Transfer</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-book text-slate-400 mr-2"></i>
+                                <span>Subsonic Aerodynamics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">
+                    Let's <span class="text-amber-500">Connect</span>
+                </h2>
+                <p class="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
+                    I'm always interested in discussing engineering challenges, machine learning applications, 
+                    and innovative projects. Feel free to reach out!
+                </p>
+                
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div class="glass-card rounded-xl p-6">
+                        <div class="text-amber-500 text-3xl mb-4">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">Email</h3>
+                        <p class="text-slate-300 text-sm">alainhalbouny@gmail.com</p>
+                    </div>
+                    
+                    <div class="glass-card rounded-xl p-6">
+                        <div class="text-amber-500 text-3xl mb-4">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">Phone</h3>
+                        <p class="text-slate-300 text-sm">+1 514 443 1307</p>
+                    </div>
+                    
+                    <div class="glass-card rounded-xl p-6">
+                        <div class="text-amber-500 text-3xl mb-4">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">Location</h3>
+                        <p class="text-slate-300 text-sm">Montreal, Canada</p>
+                    </div>
+                </div>
+
+                <div class="flex justify-center space-x-6">
+                    <a href="mailto:alainhalbouny@gmail.com" class="bg-amber-500 hover:bg-amber-600 text-slate-900 px-8 py-3 rounded-lg font-medium transition-all transform hover:scale-105">
+                        <i class="fas fa-envelope mr-2"></i>Send Email
+                    </a>
+                    <a href="tel:+15144431307" class="border border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-slate-900 px-8 py-3 rounded-lg font-medium transition-all">
+                        <i class="fas fa-phone mr-2"></i>Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900/50 border-t border-slate-700/50 py-8">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="flex justify-center items-center mb-4">
+                <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-amber-600 rounded-full flex items-center justify-center text-slate-900 font-bold text-xl mr-4">
+                    AH
+                </div>
+                <div class="text-left">
+                    <div class="font-semibold text-amber-500">Alain Halbouny</div>
+                    <div class="text-sm text-slate-400">Mechanical Engineer & ML Specialist</div>
+                </div>
+            </div>
+            <p class="text-slate-400 text-sm">
+                © 2025 Alain Halbouny. All rights reserved. | Designed with passion for engineering excellence.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Navigation Dots -->
+    <div class="fixed right-8 top-1/2 transform -translate-y-1/2 z-40 hidden lg:block">
+        <div class="flex flex-col space-y-4">
+            <div class="nav-dot active" data-section="hero"></div>
+            <div class="nav-dot" data-section="skills"></div>
+            <div class="nav-dot" data-section="projects"></div>
+            <div class="nav-dot" data-section="experience"></div>
+            <div class="nav-dot" data-section="education"></div>
+            <div class="nav-dot" data-section="contact"></div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Vanta.js background
+        VANTA.BIRDS({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            backgroundColor: 0x0f172a,
+            color1: 0xd97706,
+            color2: 0x1e293b,
+            birdSize: 1.20,
+            wingSpan: 25.00,
+            speedLimit: 3.00,
+            separation: 20.00,
+            alignment: 20.00,
+            cohesion: 20.00,
+            quantity: 3.00
+        });
+
+        // Smooth scrolling and navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for navigation links
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Navigation dots functionality
+            const navDots = document.querySelectorAll('.nav-dot');
+            const sections = document.querySelectorAll('.section');
+            
+            navDots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const targetSection = this.getAttribute('data-section');
+                    const targetElement = document.getElementById(targetSection);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Update active navigation dot on scroll
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.pageYOffset >= sectionTop - 200) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navDots.forEach(dot => {
+                    dot.classList.remove('active');
+                    if (dot.getAttribute('data-section') === current) {
+                        dot.classList.add('active');
+                    }
+                });
+            });
+
+            // Fade in animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.querySelector('nav .md\\:flex');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
