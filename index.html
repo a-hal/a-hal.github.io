@@ -215,12 +215,10 @@
                     <div class="glass-card rounded-2xl p-8">
                         <div class="text-center mb-6">
                            <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center overflow-hidden">
-                              <!-- photo: moved 12 px up so hair stays inside the circle -->
-                              <img src="https://raw.githubusercontent.com/a-hal/a-hal.github.io/main/linkedin.png"
-                                   class="absolute inset-0 w-full h-full object-cover -translate-y-3 scale-110"
-                                           alt="">
-                              <!-- initials: only show if image fails -->
-                              <span class="text-slate-900 text-4xl font-bold [img]:hidden">AH</span>
+                             <!-- background-image div: nudged 5 px down and 10 % bigger -->
+                              <div class="w-full h-full bg-cover bg-center bg-[url('https://raw.githubusercontent.com/a-hal/a-hal.github.io/main/linkedin.png')]
+                                  translate-y-5 scale-110">
+                              </div>
                             </div>
                             <h3 class="text-xl font-semibold text-amber-500">Quick Facts</h3>
                         </div>
