@@ -878,12 +878,20 @@
                     </a>
                     <a href="#" 
                        onclick="
+                         event.preventDefault();
+                    
                          const url='https://a-hal.github.io/ahalbouny_cv.pdf';
-
-                         // Open PDF in a new tab
-                         window.open(url,'_blank');
-
-                         // Trigger download in the original tab
+                         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                    
+                         if (isMobile) {
+                           // Mobile: open PDF in the same tab
+                           window.location.href = url;
+                         } else {
+                           // Desktop: open PDF in a new tab
+                           window.open(url,'_blank');
+                         }
+                    
+                         // Trigger download for all devices
                          const a = document.createElement('a');
                          a.href = url;
                          a.download = 'ahalbouny_cv.pdf';
@@ -891,12 +899,11 @@
                          document.body.appendChild(a);
                          a.click();
                          document.body.removeChild(a);
-                    
-                         return false;
                        "
-                       class="border border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-slate-900 px-8 py-3 rounded-lg font-medium transition-all">
+                       class="border border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-slate-900 px-8 py-3 rounded-lg font-medium transition-all>
                        <i class="fas fa-file-download mr-2"></i>Download CV
                     </a>
+
 
                     <a href="#" 
                        onclick="window.open('https://a-hal.github.io/ahalbouny_cv.pdf','_blank'); (()=>{const a=document.createElement('a');a.href='https://a-hal.github.io/ahalbouny_cv.pdf';a.download='ahalbouny_cv.pdf';a.click()})()" 
