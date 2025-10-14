@@ -158,8 +158,8 @@
       <!-- Logo -->
       <div class="text-xl font-bold text-amber-500">Alain Halbouny</div>
 
-      <!-- Desktop Menu (hidden on mobile) -->
-      <div class="hidden md:flex space-x-8">
+      <!-- Desktop Menu -->
+      <div class="hidden lg:flex space-x-8">
         <a href="#hero" class="text-slate-300 hover:text-amber-500 transition-colors">About</a>
         <a href="#skills" class="text-slate-300 hover:text-amber-500 transition-colors">Skills</a>
         <a href="#projects" class="text-slate-300 hover:text-amber-500 transition-colors">Projects</a>
@@ -168,28 +168,46 @@
         <a href="#contact" class="text-slate-300 hover:text-amber-500 transition-colors">Contact</a>
       </div>
 
-      <!-- Mobile Menu Button (hidden on desktop) -->
-      <div class="md:hidden">
+      <!-- Mobile Menu Button -->
+      <div class="lg:hidden">
         <button id="mobile-menu-btn" class="text-slate-300 hover:text-amber-500 focus:outline-none transition-transform duration-300">
           <i id="menu-icon" class="fas fa-bars text-xl"></i>
         </button>
       </div>
     </div>
+  </div>
 
-    <!-- Mobile Dropdown (hidden on desktop) -->
-    <div
-      id="mobile-menu"
-      class="overflow-hidden max-h-0 flex-col mt-3 space-y-3 transition-all duration-300 ease-in-out md:hidden"
-    >
-      <a href="#hero" class="block text-slate-300 hover:text-amber-500 transition-colors">About</a>
-      <a href="#skills" class="block text-slate-300 hover:text-amber-500 transition-colors">Skills</a>
-      <a href="#projects" class="block text-slate-300 hover:text-amber-500 transition-colors">Projects</a>
-      <a href="#experience" class="block text-slate-300 hover:text-amber-500 transition-colors">Experience</a>
-      <a href="#education" class="block text-slate-300 hover:text-amber-500 transition-colors">Education</a>
-      <a href="#contact" class="block text-slate-300 hover:text-amber-500 transition-colors">Contact</a>
-    </div>
+  <!-- Mobile Dropdown -->
+  <div
+    id="mobile-menu"
+    class="absolute left-0 w-full bg-slate-900/95 border-t border-slate-700/50 overflow-hidden max-h-0 flex-col space-y-3 px-6 py-3 transition-all duration-300 ease-in-out lg:hidden"
+  >
+    <a href="#hero" class="block text-slate-300 hover:text-amber-500 transition-colors">About</a>
+    <a href="#skills" class="block text-slate-300 hover:text-amber-500 transition-colors">Skills</a>
+    <a href="#projects" class="block text-slate-300 hover:text-amber-500 transition-colors">Projects</a>
+    <a href="#experience" class="block text-slate-300 hover:text-amber-500 transition-colors">Experience</a>
+    <a href="#education" class="block text-slate-300 hover:text-amber-500 transition-colors">Education</a>
+    <a href="#contact" class="block text-slate-300 hover:text-amber-500 transition-colors">Contact</a>
   </div>
 </nav>
+
+<!-- Toggle Script -->
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+
+  menuBtn.addEventListener('click', () => {
+    const isClosed = mobileMenu.classList.contains('max-h-0');
+
+    mobileMenu.classList.toggle('max-h-0');
+    mobileMenu.classList.toggle('max-h-96');
+
+    menuIcon.classList.toggle('fa-bars');
+    menuIcon.classList.toggle('fa-times');
+  });
+</script>
+
 
 <!-- Toggle Script -->
 <script>
