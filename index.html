@@ -150,8 +150,21 @@
 </head>
 <body>
     <div id="vanta-bg"></div>
+
     
 <!-- Navigation -->
+<script>
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {},
+    screens: {
+      ts: '5px', // only overriding sm
+    },
+  },
+}
+</script>
+
 <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50">
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 
@@ -159,7 +172,7 @@
       <div class="text-xl font-bold text-amber-500">Alain Halbouny</div>
     
       <!-- Desktop Menu -->
-      <div class="md:flex sm:hidden hidden space-x-8">
+      <div class="md:flex ts:hidden hidden space-x-8">
         <a href="#hero" class="text-slate-300 hover:text-amber-500 transition-colors">About</a>
         <a href="#skills" class="text-slate-300 hover:text-amber-500 transition-colors">Skills</a>
         <a href="#projects" class="text-slate-300 hover:text-amber-500 transition-colors">Projects</a>
