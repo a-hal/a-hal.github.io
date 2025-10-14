@@ -170,10 +170,7 @@
 
       <!-- Mobile Menu Button -->
       <div class="lg:hidden">
-        <button
-          id="mobile-menu-btn"
-          class="text-slate-300 hover:text-amber-500 focus:outline-none transition-transform duration-300"
-        >
+        <button id="mobile-menu-btn" class="text-slate-300 hover:text-amber-500 focus:outline-none transition-transform duration-300">
           <i id="menu-icon" class="fas fa-bars text-xl"></i>
         </button>
       </div>
@@ -202,78 +199,15 @@
 
   btn.addEventListener("click", () => {
     const isOpen = menu.classList.contains("max-h-screen");
-
     if (isOpen) {
-      // CLOSE MENU
       menu.classList.remove("max-h-screen", "opacity-100");
       menu.classList.add("max-h-0", "opacity-0");
-      icon.classList.remove("fa-times");
-      icon.classList.add("fa-bars");
+      icon.classList.replace("fa-times", "fa-bars");
     } else {
-      // OPEN MENU
       menu.classList.remove("max-h-0", "opacity-0");
       menu.classList.add("max-h-screen", "opacity-100");
-      icon.classList.remove("fa-bars");
-      icon.classList.add("fa-times");
+      icon.classList.replace("fa-bars", "fa-times");
     }
-  });
-</script>
-
-
-<!-- Toggle Script -->
-<script>
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const menuIcon = document.getElementById('menu-icon');
-
-  menuBtn.addEventListener('click', () => {
-    const isClosed = mobileMenu.classList.contains('max-h-0');
-
-    mobileMenu.classList.toggle('max-h-0');
-    mobileMenu.classList.toggle('max-h-96');
-
-    menuIcon.classList.toggle('fa-bars');
-    menuIcon.classList.toggle('fa-times');
-  });
-</script>
-
-
-<!-- Toggle Script -->
-<script>
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const menuIcon = document.getElementById('menu-icon');
-
-  menuBtn.addEventListener('click', () => {
-    const isClosed = mobileMenu.classList.contains('max-h-0');
-
-    // Slide animation toggle
-    mobileMenu.classList.toggle('max-h-0');
-    mobileMenu.classList.toggle('max-h-96');
-
-    // Animate icon
-    menuIcon.classList.toggle('fa-bars');
-    menuIcon.classList.toggle('fa-times');
-  });
-</script>
-
-
-<!-- Toggle Script -->
-<script>
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const menuIcon = document.getElementById('menu-icon');
-
-  menuBtn.addEventListener('click', () => {
-    const isClosed = mobileMenu.classList.contains('max-h-0');
-
-    // Slide animation toggle
-    mobileMenu.classList.toggle('max-h-0');
-    mobileMenu.classList.toggle('max-h-96');
-
-    // Animate icon
-    menuIcon.classList.toggle('fa-bars');
-    menuIcon.classList.toggle('fa-times'); // changes icon
   });
 </script>
 
