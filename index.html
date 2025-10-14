@@ -155,12 +155,8 @@
 <!-- Navigation -->
 
 // tailwind.config.js
-theme: {
-  extend: {
-    screens: {
-      ts: '5px',   // override sm
-    }
-  }
+screens: {
+  sm: '5px',    // override default sm
 }
 
 
@@ -171,7 +167,7 @@ theme: {
       <div class="text-xl font-bold text-amber-500">Alain Halbouny</div>
     
       <!-- Desktop Menu -->
-      <div class="md:flex ts:hidden hidden space-x-8">
+      <div class="md:flex sm:hidden hidden space-x-8">
         <a href="#hero" class="text-slate-300 hover:text-amber-500 transition-colors">About</a>
         <a href="#skills" class="text-slate-300 hover:text-amber-500 transition-colors">Skills</a>
         <a href="#projects" class="text-slate-300 hover:text-amber-500 transition-colors">Projects</a>
