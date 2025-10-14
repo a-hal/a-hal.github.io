@@ -151,14 +151,14 @@
 <body>
     <div id="vanta-bg"></div>
     
-   <!-- Navigation -->
+<!-- Navigation -->
 <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50">
   <div class="max-w-6xl mx-auto px-6 py-4">
     <div class="flex items-center justify-between">
       <!-- Logo -->
       <div class="text-xl font-bold text-amber-500">Alain Halbouny</div>
 
-      <!-- Desktop Menu -->
+      <!-- Desktop Menu (hidden on mobile) -->
       <div class="hidden md:flex space-x-8">
         <a href="#hero" class="text-slate-300 hover:text-amber-500 transition-colors">About</a>
         <a href="#skills" class="text-slate-300 hover:text-amber-500 transition-colors">Skills</a>
@@ -168,7 +168,7 @@
         <a href="#contact" class="text-slate-300 hover:text-amber-500 transition-colors">Contact</a>
       </div>
 
-      <!-- Mobile Menu Button -->
+      <!-- Mobile Menu Button (hidden on desktop) -->
       <div class="md:hidden">
         <button id="mobile-menu-btn" class="text-slate-300 hover:text-amber-500 focus:outline-none transition-transform duration-300">
           <i id="menu-icon" class="fas fa-bars text-xl"></i>
@@ -176,7 +176,7 @@
       </div>
     </div>
 
-    <!-- Mobile Dropdown (animated) -->
+    <!-- Mobile Dropdown (hidden on desktop) -->
     <div
       id="mobile-menu"
       class="overflow-hidden max-h-0 flex-col mt-3 space-y-3 transition-all duration-300 ease-in-out md:hidden"
@@ -190,6 +190,26 @@
     </div>
   </div>
 </nav>
+
+<!-- Toggle Script -->
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+
+  menuBtn.addEventListener('click', () => {
+    const isClosed = mobileMenu.classList.contains('max-h-0');
+
+    // Slide animation toggle
+    mobileMenu.classList.toggle('max-h-0');
+    mobileMenu.classList.toggle('max-h-96');
+
+    // Animate icon
+    menuIcon.classList.toggle('fa-bars');
+    menuIcon.classList.toggle('fa-times');
+  });
+</script>
+
 
 <!-- Toggle Script -->
 <script>
