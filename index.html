@@ -153,74 +153,60 @@
     
 <!-- Navigation -->
 <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <!-- Logo -->
-        <div class="text-xl font-bold text-amber-500">Alain Halbouny</div>
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <div class="text-xl font-bold text-amber-500">Alain Halbouny</div>
 
-        <!-- Desktop Menu -->
-        <div id="desktop-menu" class="hidden space-x-8">
-            <a href="#hero" class="text-slate-300 hover:text-amber-500 transition-colors">About</a>
-            <a href="#skills" class="text-slate-300 hover:text-amber-500 transition-colors">Skills</a>
-            <a href="#projects" class="text-slate-300 hover:text-amber-500 transition-colors">Projects</a>
-            <a href="#experience" class="text-slate-300 hover:text-amber-500 transition-colors">Experience</a>
-            <a href="#contact" class="text-slate-300 hover:text-amber-500 transition-colors">Contact</a>
-        </div>
+      <!-- Desktop Menu -->
+      <div class="hidden lg:flex space-x-8">
+        <a href="#hero" class="text-slate-300 hover:text-amber-500 transition-colors">About</a>
+        <a href="#skills" class="text-slate-300 hover:text-amber-500 transition-colors">Skills</a>
+        <a href="#projects" class="text-slate-300 hover:text-amber-500 transition-colors">Projects</a>
+        <a href="#experience" class="text-slate-300 hover:text-amber-500 transition-colors">Experience</a>
+        <a href="#education" class="text-slate-300 hover:text-amber-500 transition-colors">Education</a>
+        <a href="#contact" class="text-slate-300 hover:text-amber-500 transition-colors">Contact</a>
+      </div>
 
-        <!-- Mobile Menu Button -->
-        <div id="mobile-menu-btn">
-            <button class="text-slate-300 hover:text-amber-500">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-        </div>
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="text-slate-300 hover:text-amber-500 focus:outline-none transition-transform">
+          <i id="menu-icon" class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
     </div>
 
-    <!-- Mobile Dropdown Menu -->
-    <div id="mobile-menu" class="hidden absolute right-6 mt-2 bg-slate-900/85 backdrop-blur-md border border-slate-700/50 rounded-lg w-48 shadow-lg z-50">
-        <div class="flex flex-col px-4 py-3 space-y-3">
-            <a href="#hero" class="text-slate-300 hover:text-amber-500 transition-colors">About</a>
-            <a href="#skills" class="text-slate-300 hover:text-amber-500 transition-colors">Skills</a>
-            <a href="#projects" class="text-slate-300 hover:text-amber-500 transition-colors">Projects</a>
-            <a href="#experience" class="text-slate-300 hover:text-amber-500 transition-colors">Experience</a>
-            <a href="#contact" class="text-slate-300 hover:text-amber-500 transition-colors">Contact</a>
-        </div>
-    </div>
+  <!-- Mobile Dropdown -->
+  <div
+    id="mobile-menu"
+    class="lg:hidden absolute right-6 mt-2 bg-slate-900/95 border border-slate-700/50 rounded-lg overflow-hidden max-h-0 flex flex-col space-y-2 px-4 py-2 transition-all duration-300 ease-in-out lg:hidden opacity-0"
+    style="width: max-content;"
+  >
+    <a href="#hero" class="block text-slate-300 hover:text-amber-500 transition-colors">About</a>
+    <a href="#skills" class="block text-slate-300 hover:text-amber-500 transition-colors">Skills</a>
+    <a href="#projects" class="block text-slate-300 hover:text-amber-500 transition-colors">Projects</a>
+    <a href="#experience" class="block text-slate-300 hover:text-amber-500 transition-colors">Experience</a>
+    <a href="#education" class="block text-slate-300 hover:text-amber-500 transition-colors">Education</a>
+    <a href="#contact" class="block text-slate-300 hover:text-amber-500 transition-colors">Contact</a>
+  </div>
 </nav>
 
-<!-- JS -->
 <script>
-    const desktopMenu = document.getElementById('desktop-menu');
-    const mobileBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  const icon = document.getElementById("menu-icon");
 
-    function updateMenu() {
-        const containerWidth = desktopMenu.parentElement.offsetWidth;
-        const menuWidth = Array.from(desktopMenu.children).reduce((sum, item) => {
-            const style = getComputedStyle(item);
-            const margin = parseInt(style.marginRight) || 0;
-            return sum + item.offsetWidth + margin;
-        }, 0);
-
-        // 200px buffer for logo & spacing
-        if (menuWidth + 200 < containerWidth) {
-            desktopMenu.classList.remove('hidden');
-            mobileBtn.style.display = 'none';
-            mobileMenu.classList.add('hidden'); // hide mobile menu if desktop shown
-        } else {
-            desktopMenu.classList.add('hidden');
-            mobileBtn.style.display = 'block';
-        }
+  btn.addEventListener("click", () => {
+    const isOpen = menu.classList.contains("max-h-screen");
+    if (isOpen) {
+      menu.classList.remove("max-h-screen", "opacity-100");
+      menu.classList.add("max-h-0", "opacity-0");
+      icon.classList.replace("fa-times", "fa-bars");
+    } else {
+      menu.classList.remove("max-h-0", "opacity-0");
+      menu.classList.add("max-h-screen", "opacity-100");
+      icon.classList.replace("fa-bars", "fa-times");
     }
-
-    window.addEventListener('load', updateMenu);
-    window.addEventListener('resize', updateMenu);
-
-    // Toggle mobile dropdown
-    mobileBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        const icon = mobileBtn.querySelector('i');
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-times');
-    });
+  });
 </script>
 
 
