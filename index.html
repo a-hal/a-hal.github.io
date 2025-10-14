@@ -170,7 +170,10 @@
 
       <!-- Mobile Menu Button -->
       <div class="lg:hidden">
-        <button id="mobile-menu-btn" class="text-slate-300 hover:text-amber-500 focus:outline-none transition-transform duration-300">
+        <button
+          id="mobile-menu-btn"
+          class="text-slate-300 hover:text-amber-500 focus:outline-none transition-transform duration-300"
+        >
           <i id="menu-icon" class="fas fa-bars text-xl"></i>
         </button>
       </div>
@@ -180,7 +183,7 @@
   <!-- Mobile Dropdown -->
   <div
     id="mobile-menu"
-    class="absolute right-6 mt-2 bg-slate-900/95 border border-slate-700/50 rounded-lg overflow-hidden max-h-0 flex-col space-y-2 px-4 py-2 transition-all duration-300 ease-in-out lg:hidden opacity-0"
+    class="absolute left-6 mt-2 bg-slate-900/95 border border-slate-700/50 rounded-lg overflow-hidden max-h-0 flex-col space-y-2 px-4 py-2 transition-all duration-300 ease-in-out lg:hidden opacity-0"
     style="width: max-content;"
   >
     <a href="#hero" class="block text-slate-300 hover:text-amber-500 transition-colors">About</a>
@@ -199,17 +202,23 @@
 
   btn.addEventListener("click", () => {
     const isOpen = menu.classList.contains("max-h-screen");
+
     if (isOpen) {
+      // CLOSE MENU
       menu.classList.remove("max-h-screen", "opacity-100");
       menu.classList.add("max-h-0", "opacity-0");
-      icon.classList.replace("fa-times", "fa-bars");
+      icon.classList.remove("fa-times");
+      icon.classList.add("fa-bars");
     } else {
+      // OPEN MENU
       menu.classList.remove("max-h-0", "opacity-0");
       menu.classList.add("max-h-screen", "opacity-100");
-      icon.classList.replace("fa-bars", "fa-times");
+      icon.classList.remove("fa-bars");
+      icon.classList.add("fa-times");
     }
   });
 </script>
+
 
 <!-- Toggle Script -->
 <script>
