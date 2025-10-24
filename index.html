@@ -257,33 +257,33 @@
                     </div>
                 </div>
                 <div class="flex flex-wrap space-x-2 sm:space-x-4">
-                  <a href="#contact" 
-                     class="bg-amber-500 hover:bg-amber-600 text-slate-900 
-                            px-4 py-2 sm:px-6 sm:py-3 
-                            rounded-lg font-medium text-sm sm:text-base 
-                            transition-all transform hover:scale-105">
-                    <i class="fas fa-envelope mr-1 sm:mr-2"></i>Get In Touch
-                  </a>
-                
-                  <a href="#" 
-                     onclick="
-                       event.preventDefault();
-                       const url='https://a-hal.github.io/ahalbouny_cv.pdf';
-                       const isMobile=/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-                       if(isMobile){window.location.href=url;}else{window.open(url,'_blank');}
-                       const a=document.createElement('a');
-                       a.href=url;a.download='ahalbouny_cv.pdf';
-                       a.style.display='none';document.body.appendChild(a);
-                       a.click();document.body.removeChild(a);
-                     "
-                     class="border border-amber-500 text-amber-500 
-                            hover:bg-amber-500 hover:text-slate-900 
-                            px-4 py-2 sm:px-6 sm:py-3 
-                            rounded-lg font-medium text-sm sm:text-base 
-                            transition-all">
-                    <i class="fas fa-file-download mr-1 sm:mr-2"></i>Download CV
-                  </a>
-                </div>
+                  <div class="flex space-x-4">
+                      <a href="#contact" 
+                         class="bg-amber-500 hover:bg-amber-600 text-slate-900 
+                                px-6 py-3 rounded-lg font-medium 
+                                text-sm sm:text-base 
+                                transition-all transform hover:scale-105">
+                        <i class="fas fa-envelope mr-2"></i>Get In Touch
+                      </a>
+                    
+                      <a href="#" 
+                         onclick="
+                           event.preventDefault();
+                           const url='https://a-hal.github.io/ahalbouny_cv.pdf';
+                           const isMobile=/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                           if(isMobile){window.location.href=url;}else{window.open(url,'_blank');}
+                           const a=document.createElement('a');
+                           a.href=url;a.download='ahalbouny_cv.pdf';
+                           a.style.display='none';document.body.appendChild(a);
+                           a.click();document.body.removeChild(a);
+                         "
+                         class="border border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-slate-900 
+                                px-6 py-3 rounded-lg font-medium 
+                                text-sm sm:text-base 
+                                transition-all">
+                        <i class="fas fa-file-download mr-2"></i>Download CV
+                      </a>
+                    </div>
 
             </div>
             <div class="relative">
@@ -498,7 +498,7 @@
                 <div class="project-card rounded-xl p-8 fade-in">
                     <div class="flex items-start justify-between mb-6">
                         <div>
-                            <h3 class="text-2xl sm:text-xl font-bold text-amber-500 mb-2">ML & LLM Project</h3>
+                            <h3 class="text-2xl font-bold text-amber-500 mb-2">ML & LLM Project</h3>
                             <div class="flex items-center text-slate-400 mb-2">
                                 <i class="fas fa-calendar mr-2 "></i>
                                 <span>May 2025 - Ongoing</span>
