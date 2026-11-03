@@ -312,7 +312,7 @@ def page(d):
   <link rel="alternate" hreflang="fr" href="https://a-hal.github.io/fr/">
   <meta property="og:title" content="{d['title']}">
   <meta property="og:description" content="{attr(d['desc'])}">
-  <meta property="og:image" content="https://a-hal.github.io/linkedin.png">
+  <meta property="og:image" content="https://a-hal.github.io/portrait.jpg">
   <script>document.documentElement.classList.add("js");try{{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}}catch(e){{}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -323,7 +323,7 @@ def page(d):
 
 <header class="topbar" id="top">
   <div class="topbar-in">
-    <a class="me" href="#hero" aria-label="Alain Halbouny"><img src="{b}linkedin.png" alt="" width="28" height="28"><span>Alain Halbouny</span></a>
+    <a class="me" href="#hero" aria-label="Alain Halbouny"><img src="{b}portrait-sm.jpg" alt="" width="28" height="28"><span>Alain Halbouny</span></a>
     <nav class="sections" aria-label="{d['nav_label']}">
       <div class="track">
         <span class="pill" aria-hidden="true"></span>
@@ -343,7 +343,7 @@ def page(d):
     <div class="wrap">
       {LAMP.format(label=attr(d['lamp']))}
       <div class="hero-text">
-      <img class="portrait" src="{b}linkedin.png" alt="Alain Halbouny" width="88" height="88">
+      <img class="portrait" src="{b}portrait.jpg" alt="Alain Halbouny" width="88" height="88">
       <h1>{d['hello']}</h1>
       <p class="lede">{d['lede']}</p>
       <p class="facts">{d['facts']}</p>
@@ -354,7 +354,7 @@ def page(d):
       </div>
       <a class="scroll-cue" href="#rowad">{d['scroll']} {icon('down')}</a>
       </div>
-      <figure class="hero-photo"><img src="{b}linkedin.png" alt="" width="420" height="420"></figure>
+      <figure class="hero-photo"><img src="{b}portrait.jpg" alt="" width="260" height="260"></figure>
     </div>
   </section>
 
