@@ -1,9 +1,9 @@
 /* Alain Halbouny, personal site.
    - The lamp: pull its cord (or click it) to switch light and dark.
      After Pin UI's Lamp Switch; the swing is one damped spring.
-   - Lists: one hover highlight per list that glides between rows,
-     after Fluid Functionalism's fluid hover.
-   - Rows open in place to show their details.
+   - The bar: one indicator glides to the section you are in, a thin line
+     shows how far down you are, and every section is a tap away.
+   - Copy the email with one click (an icon swap after Fluid Functionalism).
    - The material recovery illustration: decisions land on the rows,
      then the total rolls like an odometer, after Bencho's rolling counter.
    - Sounds: Bencho's synthesised "tick", only ever for your own pull. */
@@ -11,7 +11,6 @@
   "use strict";
   var root = document.documentElement;
   var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   /* ── one spring, in frames (from Bencho's lab/spring) ─────────── */
   function springOf(tune) { return { k: 0.08 + (tune / 100) * 0.16, d: 0.62 + (tune / 100) * 0.2 }; }
@@ -135,70 +134,90 @@
     btn.addEventListener("click", function (e) { e.preventDefault(); });
   })();
 
-  /* ── sections arrive once, as they first come into view ───────── */
+  /* ── blocks arrive once, as they first come into view ─────────── */
   (function reveal() {
-    var sections = document.querySelectorAll(".reveal > section");
-    if (!("IntersectionObserver" in window)) {
-      sections.forEach(function (s) { s.classList.add("in"); });
-      return;
-    }
+    var blocks = document.querySelectorAll(".chapter .wrap > *");
+    if (!("IntersectionObserver" in window)) { blocks.forEach(function (b) { b.classList.add("in"); }); return; }
     var io = new IntersectionObserver(function (entries) {
-      var shown = 0;
+      var n = 0;
       entries.forEach(function (en) {
         if (!en.isIntersecting) return;
-        /* sections already on screen at load arrive just after the intro, a step apart */
-        var delay = performance.now() < 1200 ? 200 + shown * 80 : shown * 80;
-        shown++;
-        en.target.style.transitionDelay = delay + "ms";
+        en.target.style.transitionDelay = (n++ * 60) + "ms";
         en.target.classList.add("in");
         io.unobserve(en.target);
       });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
-    sections.forEach(function (s) { io.observe(s); });
+    }, { rootMargin: "0px 0px -6% 0px", threshold: 0.05 });
+    blocks.forEach(function (b) { io.observe(b); });
   })();
 
-  /* ── fluid hover: one highlight per list ──────────────────────── */
-  function fluidHover(list) {
-    var hl = document.createElement("div");
-    hl.className = "hl"; hl.setAttribute("aria-hidden", "true");
-    list.insertBefore(hl, list.firstChild);
-    var current = null;
-    function place(el) {
-      hl.style.width = el.offsetWidth + "px";
-      hl.style.height = el.offsetHeight + "px";
-      hl.style.transform = "translate(" + el.offsetLeft + "px," + el.offsetTop + "px)";
-    }
-    function light(li) {
-      if (li === current) return;
-      if (!current) {
-        /* a fresh entry fades in where it lands instead of sliding over */
-        hl.classList.add("snap"); place(li); void hl.offsetWidth; hl.classList.remove("snap");
-      } else place(li);
-      current = li; hl.classList.add("on");
-    }
-    function out() { current = null; hl.classList.remove("on"); }
-    list.addEventListener("pointermove", function (e) {
-      if (e.pointerType !== "mouse") return;
-      /* only the click target lights: the row's head, not its open details */
-      var head = e.target.closest(".item-head");
-      if (head && list.contains(head)) light(head); else out();
-    });
-    list.addEventListener("pointerleave", out);
-    if ("ResizeObserver" in window) {
-      new ResizeObserver(function () { if (current) place(current); }).observe(list);
-    }
-  }
-  if (finePointer) document.querySelectorAll(".list").forEach(fluidHover);
+  /* ── the bar: where you are, and how far down ─────────────────── */
+  (function bar() {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".track a[data-spy]"));
+    var track = document.querySelector(".track"), pill = document.querySelector(".pill");
+    var fill = document.querySelector(".progress span");
+    var targets = links.map(function (a) { return document.getElementById(a.getAttribute("data-spy")); });
+    var current = null, ticking = false;
 
-  /* ── rows that open ───────────────────────────────────────────── */
-  document.querySelectorAll(".item-head").forEach(function (head) {
-    head.addEventListener("click", function () {
-      var li = head.parentNode, open = !li.classList.contains("open");
-      li.classList.toggle("open", open);
-      head.setAttribute("aria-expanded", open ? "true" : "false");
-      var stage = li.querySelector(".stage");
-      if (open && stage) setTimeout(function () { playStage(stage); }, still ? 0 : 260);
+    function place(a) {
+      if (!a) { pill.classList.remove("on"); return; }
+      pill.style.width = a.offsetWidth + "px";
+      pill.style.transform = "translateX(" + a.offsetLeft + "px)";
+      pill.classList.add("on");
+    }
+    function setActive(a) {
+      if (a === current) return;
+      if (current) current.classList.remove("on");
+      if (a) a.classList.add("on");
+      /* first appearance fades in where it lands instead of sliding over */
+      if (!current && a) { pill.style.transition = "opacity 160ms ease"; place(a); void pill.offsetWidth; pill.style.transition = ""; }
+      else place(a);
+      current = a;
+      /* on a phone, keep the active section in view in the strip */
+      if (a && track.scrollWidth > track.clientWidth) {
+        var left = a.offsetLeft - (track.clientWidth - a.offsetWidth) / 2;
+        track.scrollTo({ left: left, behavior: still ? "auto" : "smooth" });
+      }
+    }
+    function update() {
+      ticking = false;
+      var y = window.scrollY, vh = window.innerHeight, max = document.documentElement.scrollHeight - vh;
+      if (fill) fill.style.transform = "scaleX(" + (max > 0 ? Math.min(1, y / max) : 0) + ")";
+      /* the section whose top has passed a line a third of the way down the screen */
+      var line = vh * 0.33, active = null;
+      targets.forEach(function (t, i) { if (t && t.getBoundingClientRect().top <= line) active = links[i]; });
+      if (max - y < 4) active = links[links.length - 1];
+      setActive(active);
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", function () { if (current) place(current); onScroll(); });
+    links.forEach(function (a) {
+      a.addEventListener("click", function () { setActive(a); });
     });
+    update();
+  })();
+
+  /* ── copy the email: two glyphs in one cell, crossfading ──────── */
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    var label = btn.querySelector(".copy-label"), live = btn.querySelector(".sr"), orig = label.textContent, t = 0;
+    btn.addEventListener("click", function () {
+      var email = btn.getAttribute("data-email");
+      function done() {
+        btn.classList.add("done"); label.textContent = btn.getAttribute("data-copied"); live.textContent = btn.getAttribute("data-copied");
+        clearTimeout(t); t = setTimeout(function () { btn.classList.remove("done"); label.textContent = orig; live.textContent = ""; }, 1800);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(email).then(done, function () { window.location.href = "mailto:" + email; });
+      else window.location.href = "mailto:" + email;
+    });
+  });
+
+  /* ── the illustration plays when it scrolls into view ─────────── */
+  document.querySelectorAll(".stage").forEach(function (stage) {
+    if (!("IntersectionObserver" in window)) { playStage(stage); return; }
+    var io = new IntersectionObserver(function (en) {
+      if (en[0].isIntersecting) { io.disconnect(); setTimeout(function () { playStage(stage); }, still ? 0 : 200); }
+    }, { threshold: 0.5 });
+    io.observe(stage);
   });
 
   /* ── the illustration: decisions land, then the total rolls ───── */
