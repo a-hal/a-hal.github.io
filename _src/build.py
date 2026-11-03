@@ -12,12 +12,14 @@ PLUS = ('<svg class="plus" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 
 LAMP = """<button class="lamp" id="lamp" type="button" aria-label="{label}">
       <svg width="44" height="96" viewBox="0 0 44 96" aria-hidden="true">
+        <g class="swing">
         <line class="cord" x1="22" y1="0" x2="22" y2="34"/>
         <g class="hang">
           <ellipse class="glow" cx="22" cy="62" rx="20" ry="14" filter="url(#lamp-blur)"/>
           <rect class="shade" x="19" y="33" width="6" height="5" rx="1.5"/>
           <path class="shade" d="M9 52 C9 43 14.5 37 22 37 C29.5 37 35 43 35 52 Z"/>
           <circle class="bulb" cx="22" cy="54" r="4.5"/>
+        </g>
         </g>
         <defs><filter id="lamp-blur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="6"/></filter></defs>
       </svg>
