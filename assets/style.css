@@ -23,6 +23,8 @@
   --exit-fast: 60ms ease-in;
   --exit-moderate: 120ms ease-in;
   --arrive: cubic-bezier(0.25, 0.8, 0.25, 1);
+  --glide: cubic-bezier(0.22, 1, 0.36, 1);      /* soft arrival, no overshoot */
+  --settle: cubic-bezier(0.4, 0, 0.2, 1);
 
   --w-normal: "wght" 400, "opsz" 16;
   --w-semi: "wght" 600, "opsz" 22;
@@ -137,12 +139,14 @@ h2 { margin: 0 0 6px; font-size: 15px; color: var(--primary); }
 [aria-expanded="true"] .plus { transform: rotate(45deg); color: var(--ink); }
 
 .panel { display: grid; grid-template-rows: 1fr; }
-.js .panel { grid-template-rows: 0fr; transition: grid-template-rows var(--exit-moderate); }
+/* Height grows on a curve with no overshoot, so the rows below glide down
+   instead of bouncing; closing is a little quicker than opening. */
+.js .panel { grid-template-rows: 0fr; transition: grid-template-rows 220ms var(--settle); }
 .panel > div { overflow: hidden; min-height: 0; }
-.js .open > .panel { grid-template-rows: 1fr; transition: grid-template-rows var(--spring-slow); }
+.js .open > .panel { grid-template-rows: 1fr; transition: grid-template-rows 340ms var(--glide); }
 .panel-in { padding: 4px 12px 16px; }
-.js .panel-in { opacity: 0; transform: translateY(-4px); transition: opacity var(--exit-fast), transform var(--exit-fast); }
-.js .open .panel-in { opacity: 1; transform: none; transition: opacity var(--spring-slow) 40ms, transform var(--spring-slow) 40ms; }
+.js .panel-in { opacity: 0; transition: opacity 120ms ease-out; }
+.js .open .panel-in { opacity: 1; transition: opacity 300ms var(--glide) 60ms; }
 .panel ul { margin: 0; padding: 0 0 0 18px; list-style: disc; display: grid; gap: 4px; font-size: 15px; }
 .panel li::marker { color: var(--accent); }
 
@@ -155,20 +159,15 @@ h2 { margin: 0 0 6px; font-size: 15px; color: var(--primary); }
 footer { padding: 56px 0 40px; color: var(--muted); font-size: 13px; }
 
 /* ---------- Page reveal (after Fluid Functionalism's reveal-landing) ---------- */
-@keyframes reveal-in { from { opacity: 0; transform: translateY(12px) scale(0.94); } }
-@keyframes reveal-out { to { opacity: 0; transform: translateY(-12px) scale(0.94); } }
-.reveal > .intro > * { animation: reveal-in var(--spring-slow) both; }
-.reveal > .intro > :nth-child(2) { animation-delay: .1s; }
-.reveal > .intro > :nth-child(n + 3) { animation-delay: .2s; }
-.reveal > section { animation: reveal-in var(--spring-slow) .3s both; }
-@supports (animation-timeline: view()) {
-  .reveal > section {
-    animation: reveal-in 1ms linear both, reveal-out 1ms linear both, reveal-in var(--spring-slow) backwards;
-    animation-timeline: view(), view(), auto;
-    animation-range: entry 12px entry 120px, exit calc(100% - 120px) exit calc(100% - 12px), normal;
-    animation-delay: 0s, 0s, .4s;
-  }
-}
+/* One calm rise, once: no scale, no overshoot, nothing tied to the scroll
+   position, nothing on the way out. Sections arrive as they first come into
+   view (main.js adds .in); without JavaScript everything is simply there. */
+@keyframes reveal-in { from { opacity: 0; transform: translateY(8px); } }
+.reveal > .intro > * { animation: reveal-in 560ms var(--glide) both; }
+.reveal > .intro > :nth-child(2) { animation-delay: 70ms; }
+.reveal > .intro > :nth-child(n + 3) { animation-delay: 140ms; }
+.js .reveal > section { opacity: 0; transform: translateY(10px); }
+.js .reveal > section.in { opacity: 1; transform: none; transition: opacity 600ms var(--glide), transform 600ms var(--glide); }
 
 /* ---------- Illustration: the material recovery app (Stageshow rules) ---------- */
 .stage {
@@ -222,5 +221,6 @@ footer { padding: 56px 0 40px; color: var(--muted); font-size: 13px; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal > *, .reveal > * > * { animation: none !important; }
+  .js .reveal > section { transform: none !important; }
   .hl, .plus, .panel, .panel-in, .chip { transition-property: opacity, color, background-color !important; }
 }

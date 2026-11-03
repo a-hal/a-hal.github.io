@@ -135,6 +135,28 @@
     btn.addEventListener("click", function (e) { e.preventDefault(); });
   })();
 
+  /* ── sections arrive once, as they first come into view ───────── */
+  (function reveal() {
+    var sections = document.querySelectorAll(".reveal > section");
+    if (!("IntersectionObserver" in window)) {
+      sections.forEach(function (s) { s.classList.add("in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      var shown = 0;
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        /* sections already on screen at load arrive just after the intro, a step apart */
+        var delay = performance.now() < 1200 ? 200 + shown * 80 : shown * 80;
+        shown++;
+        en.target.style.transitionDelay = delay + "ms";
+        en.target.classList.add("in");
+        io.unobserve(en.target);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    sections.forEach(function (s) { io.observe(s); });
+  })();
+
   /* ── fluid hover: one highlight per list ──────────────────────── */
   function fluidHover(list) {
     var hl = document.createElement("div");
