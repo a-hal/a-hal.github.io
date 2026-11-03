@@ -224,16 +224,3 @@ footer { padding: 56px 0 40px; color: var(--muted); font-size: 13px; }
   .js .reveal > section { transform: none !important; }
   .hl, .plus, .panel, .panel-in, .chip { transition-property: opacity, color, background-color !important; }
 }
-
-/* ---------- Play: the flock ---------- */
-html, body { overflow-x: clip; }
-.play .hint { margin: 0; color: var(--muted); font-size: 15px; }
-.play .hint b { color: var(--ink); }
-/* full bleed, no frame: the flock flies over the page itself, faded at its edges */
-#flock {
-  display: block; width: 100vw; height: 300px; margin: 10px 0 0 calc(50% - 50vw);
-  touch-action: pan-y; cursor: crosshair;
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
-          mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
-}
-@media (max-width: 520px) { #flock { height: 260px; } }
