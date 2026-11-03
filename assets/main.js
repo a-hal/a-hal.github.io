@@ -16,10 +16,3 @@
     try { localStorage.setItem("theme", next); } catch (e) {}
   });
 })();
-
-// Remember the chosen language so the switch feels sticky.
-document.querySelectorAll("[data-lang]").forEach(function (a) {
-  a.addEventListener("click", function () {
-    try { localStorage.setItem("lang", a.getAttribute("data-lang")); } catch (e) {}
-  });
-});
