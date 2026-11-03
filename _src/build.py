@@ -76,8 +76,7 @@ EN = dict(
     role="Mechanical Engineer",
     lede="MEP engineer at Rowad in Cairo and co-founder of IQASE. I design hardware and build the software around it with AI.",
     cv="cv/Alain_Halbouny_CV.pdf", lamp="Pull the cord to switch light and dark", en_href="./", fr_href="fr/",
-    h_exp="Experience", h_proj="Projects", h_edu="Education", h_skills="Skills", h_play="Play",
-    play='<b>Move</b> to steer the flock, <b>hold</b> to call it in, <b>click</b> to scatter it. Pull the lamp after dark and the <span id="flock-count">90</span> birds turn into fireflies.',
+    h_exp="Experience", h_proj="Projects", h_edu="Education", h_skills="Skills",
     stage=dict(title="Aging stock", site="To site", scrap="Scrap", ret="Return", label="Recovered",
                sub="First 20% of 1,400 SKUs, 2× book value",
                aria="The material recovery app: each idle item gets a decision, to site, scrap or return, and the recovered total reaches EGP 10M."),
@@ -130,8 +129,7 @@ FR = dict(
     role="Ingénieur mécanique",
     lede="Ingénieur MEP chez Rowad au Caire et co-fondateur d'IQASE. Je conçois du matériel et je développe les logiciels autour, avec l'IA.",
     cv="../cv/Alain_Halbouny_CV_FR.pdf", lamp="Tirez le cordon pour passer du clair au sombre", en_href="../", fr_href="./",
-    h_exp="Expérience", h_proj="Projets", h_edu="Formation", h_skills="Compétences", h_play="Jouer",
-    play='<b>Bougez</b> pour guider la nuée, <b>maintenez</b> pour l\'appeler, <b>cliquez</b> pour la disperser. Tirez la lampe à la nuit tombée et les <span id="flock-count">90</span>&nbsp;oiseaux deviennent des lucioles.',
+    h_exp="Expérience", h_proj="Projets", h_edu="Formation", h_skills="Compétences",
     stage=dict(title="Stocks dormants", site="Chantier", scrap="Ferraille", ret="Retour", label="Récupérés",
                sub="Premiers 20&nbsp;% de 1&nbsp;400 références, 2× la valeur comptable",
                aria="L'application de valorisation des stocks : chaque article reçoit une décision, chantier, ferraille ou retour, et le total récupéré atteint 10&nbsp;M&nbsp;EGP."),
@@ -274,19 +272,12 @@ def page(d):
       <h2>{d['h_skills']}</h2>
 {skills}
     </section>
-
-    <section class="play">
-      <h2>{d['h_play']}</h2>
-      <p class="hint">{d['play']}</p>
-      <canvas id="flock" aria-label="{attr(d['h_play'])}: flock"></canvas>
-    </section>
   </main>
 
   <footer>© 2026 Alain Halbouny</footer>
 
 </div>
 <script src="{b}assets/main.js"></script>
-<script src="{b}assets/flock.js"></script>
 </body>
 </html>
 """
