@@ -81,7 +81,7 @@ a:hover { text-decoration: underline; text-decoration-color: var(--accent); text
 .topbar-in { max-width: 960px; margin: 0 auto; height: 100%; padding: 0 16px; display: flex; align-items: center; gap: 14px; }
 .me { display: flex; align-items: center; gap: 10px; color: var(--ink); flex: none; font-size: 15px; font-variation-settings: var(--w-semi); }
 .me:hover { text-decoration: none; }
-.me img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; object-position: center 15%; }
+.me img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
 .sections { flex: 1; min-width: 0; display: flex; justify-content: center; }
 .track { position: relative; display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; padding: 4px; }
 .track::-webkit-scrollbar { display: none; }
@@ -115,7 +115,7 @@ a:hover { text-decoration: underline; text-decoration-color: var(--accent); text
 /* ---------- Hero ---------- */
 .hero { min-height: calc(100svh - var(--bar-h)); display: flex; align-items: center; padding: 48px 0 40px; }
 .hero .wrap { width: 100%; }
-.portrait { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; object-position: center 15%; display: block; margin-bottom: 22px; }
+.portrait { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; display: block; margin-bottom: 22px; box-shadow: 0 0 0 1px var(--line); }
 h1 { font-size: clamp(34px, 8vw, 48px); line-height: 1.08; letter-spacing: -0.03em; margin: 0 0 16px; font-variation-settings: "wght" 700, "opsz" 32; }
 .lede { font-size: 19px; line-height: 1.55; margin: 0 0 14px; max-width: 34em; }
 .facts { color: var(--muted); font-size: 14px; margin: 0 0 26px; }
@@ -282,11 +282,11 @@ footer { padding: 28px 0 40px; color: var(--muted); font-size: 13px; border-top:
   .lamp { right: max(24px, calc(50% - 560px)); }
 
   .hero { padding: 72px 0 56px; }
-  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 72px; align-items: center; }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 80px; align-items: center; }
   .hero .portrait { display: none; }
-  .hero-photo { display: block; justify-self: end; width: 100%; max-width: 420px; }
-  .hero-photo img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: center 18%;
-    border-radius: 50%; box-shadow: var(--shadow); }
+  .hero-photo { display: block; justify-self: end; width: 260px; }
+  .hero-photo img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover;
+    border-radius: 50%; box-shadow: 0 0 0 1px var(--line); }
   h1 { font-size: clamp(56px, 5.4vw, 80px); margin-bottom: 22px; }
   .lede { font-size: 22px; max-width: 30em; }
   .facts { font-size: 15px; }
@@ -320,5 +320,5 @@ footer { padding: 28px 0 40px; color: var(--muted); font-size: 13px; border-top:
   .lamp { right: max(24px, calc(50% - 640px)); }
   .chapter .wrap { grid-template-columns: minmax(0, 400px) minmax(0, 1fr); gap: 0 120px; }
   .ch-body { max-width: 780px; }
-  .hero-photo { max-width: 480px; }
+  .hero-photo { width: 300px; }
 }
