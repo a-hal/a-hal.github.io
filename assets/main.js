@@ -64,7 +64,7 @@
   (function lamp() {
     var btn = document.getElementById("lamp");
     if (!btn) return;
-    var svg = btn.querySelector("svg"), hang = btn.querySelector(".hang"), cord = btn.querySelector(".cord");
+    var swing = btn.querySelector(".swing"), hang = btn.querySelector(".hang"), cord = btn.querySelector(".cord");
     var REST = 34, DETENT = 20, MAX = 40;
     var y = 0, vy = 0, a = 0, va = 0, raf = 0, dragging = false, crossed = false;
     var start = null, moved = 0;
@@ -73,11 +73,14 @@
     function paint() {
       cord.setAttribute("y2", String(REST + y));
       hang.setAttribute("transform", "translate(0 " + y.toFixed(2) + ")");
-      svg.style.transform = "rotate(" + a.toFixed(2) + "deg)";
+      /* rotate in SVG's own coordinates, around the hook at (22, 0): same in every browser */
+      swing.setAttribute("transform", "rotate(" + a.toFixed(2) + " 22 0)");
     }
     function run() {
       if (raf) return;
-      var prev = 0, sy = springOf(55), sa = springOf(70);
+      /* with Reduce Motion on, the cord still follows the hand but settles back
+         without overshoot, and nothing swings on its own */
+      var prev = 0, sy = springOf(still ? 0 : 55), sa = springOf(70);
       function frame(t) {
         var dt = prev ? clamp((t - prev) / 16.67, 0, 2.5) : 1; prev = t;
         var busy = false;
@@ -97,29 +100,28 @@
       if (e.button !== 0) return;
       start = { x: e.clientX, y: e.clientY, a: a }; moved = 0; crossed = false; dragging = true;
       try { btn.setPointerCapture(e.pointerId); } catch (err) {}
-      if (!still) run();
+      run();
     });
     btn.addEventListener("pointermove", function (e) {
       if (!dragging || !start) return;
       var dx = e.clientX - start.x, dy = Math.max(0, e.clientY - start.y);
       moved = Math.max(moved, Math.hypot(dx, dy));
-      if (still) return;
       /* rubber band past the end of the cord */
       y = dy < MAX ? dy : MAX + (dy - MAX) * 0.2;
-      a = clamp(-dx * 0.5, -28, 28);
+      a = still ? 0 : clamp(-dx * 0.5, -28, 28);
       if (!crossed && y > DETENT) { crossed = true; play("latch"); }
       if (crossed && y < DETENT - 6) crossed = false;
     });
     function release(e) {
       if (!dragging) return;
       dragging = false;
-      var pulled = crossed || (still && moved > 12);
+      var pulled = crossed;
       var clicked = moved < 5;
       if (pulled || clicked) { flip(); play("tick"); }
       if (clicked && !still) { vy = 7; va = (Math.random() > 0.5 ? 1 : -1) * 2.2; }
       if (!clicked && !still) { va += clamp(-a * 0.1, -4, 4); }
       start = null;
-      if (!still) run();
+      run();
       if (e && e.pointerId !== undefined) { try { btn.releasePointerCapture(e.pointerId); } catch (err) {} }
     }
     btn.addEventListener("pointerup", release);
@@ -131,6 +133,28 @@
       }
     });
     btn.addEventListener("click", function (e) { e.preventDefault(); });
+  })();
+
+  /* ── sections arrive once, as they first come into view ───────── */
+  (function reveal() {
+    var sections = document.querySelectorAll(".reveal > section");
+    if (!("IntersectionObserver" in window)) {
+      sections.forEach(function (s) { s.classList.add("in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      var shown = 0;
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        /* sections already on screen at load arrive just after the intro, a step apart */
+        var delay = performance.now() < 1200 ? 200 + shown * 80 : shown * 80;
+        shown++;
+        en.target.style.transitionDelay = delay + "ms";
+        en.target.classList.add("in");
+        io.unobserve(en.target);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    sections.forEach(function (s) { io.observe(s); });
   })();
 
   /* ── fluid hover: one highlight per list ──────────────────────── */
