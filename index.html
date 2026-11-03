@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Alain Halbouny · Mechanical Engineer</title>
-  <meta name="description" content="Alain Halbouny: mechanical engineer (McGill), MEP engineer at Rowad Modern Engineering and co-founder of IQASE.">
+  <meta name="description" content="Alain Halbouny: mechanical engineer (McGill), MEP engineer at Rowad Modern Engineering and co-founder of IQASE. Get in touch.">
   <link rel="alternate" hreflang="en" href="https://a-hal.github.io/">
   <link rel="alternate" hreflang="fr" href="https://a-hal.github.io/fr/">
   <meta property="og:title" content="Alain Halbouny · Mechanical Engineer">
-  <meta property="og:description" content="Alain Halbouny: mechanical engineer (McGill), MEP engineer at Rowad Modern Engineering and co-founder of IQASE.">
+  <meta property="og:description" content="Alain Halbouny: mechanical engineer (McGill), MEP engineer at Rowad Modern Engineering and co-founder of IQASE. Get in touch.">
   <meta property="og:image" content="https://a-hal.github.io/linkedin.png">
   <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,152 +17,206 @@
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<div class="wrap">
 
-  <nav class="top">
+<header class="topbar" id="top">
+  <div class="topbar-in">
+    <a class="me" href="#hero" aria-label="Alain Halbouny"><img src="linkedin.png" alt="" width="28" height="28"><span>Alain Halbouny</span></a>
+    <nav class="sections" aria-label="Sections">
+      <div class="track">
+        <span class="pill" aria-hidden="true"></span>
+          <a href="#rowad" data-spy="rowad">Rowad</a>
+          <a href="#iqase" data-spy="iqase">IQASE</a>
+          <a href="#projects" data-spy="projects">Projects</a>
+          <a href="#background" data-spy="background">Background</a>
+          <a href="#contact" data-spy="contact">Contact</a>
+      </div>
+    </nav>
     <span class="lang">
-      <a href="./" hreflang="en" aria-current="page"><span class="wt"><span class="ghost" aria-hidden="true">EN</span><span class="live">EN</span></span></a>
-      <a href="fr/" hreflang="fr"><span class="wt"><span class="ghost" aria-hidden="true">FR</span><span class="live">FR</span></span></a>
+      <a href="./" hreflang="en" aria-current="page">EN</a>
+      <a href="fr/" hreflang="fr">FR</a>
     </span>
-    <button class="lamp" id="lamp" type="button" aria-label="Pull the cord to switch light and dark">
-      <svg width="44" height="96" viewBox="0 0 44 96" aria-hidden="true">
-        <g class="swing">
-        <line class="cord" x1="22" y1="0" x2="22" y2="34"/>
-        <g class="hang">
-          <ellipse class="glow" cx="22" cy="62" rx="20" ry="14" filter="url(#lamp-blur)"/>
-          <rect class="shade" x="19" y="33" width="6" height="5" rx="1.5"/>
-          <path class="shade" d="M9 52 C9 43 14.5 37 22 37 C29.5 37 35 43 35 52 Z"/>
-          <circle class="bulb" cx="22" cy="54" r="4.5"/>
-        </g>
-        </g>
-        <defs><filter id="lamp-blur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="6"/></filter></defs>
-      </svg>
-    </button>
-  </nav>
+  </div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+</header>
 
-  <main class="reveal">
-    <header class="intro">
-      <div class="who">
-        <img src="linkedin.png" alt="Alain Halbouny" width="56" height="56">
-        <div>
-          <h1>Alain Halbouny</h1>
-          <p class="role">Mechanical Engineer</p>
-        </div>
+<main>
+  <section class="hero" id="hero">
+    <div class="wrap">
+      <button class="lamp" id="lamp" type="button" aria-label="Pull the cord to switch light and dark">
+        <svg width="44" height="96" viewBox="0 0 44 96" aria-hidden="true">
+          <g class="swing">
+          <line class="cord" x1="22" y1="0" x2="22" y2="34"/>
+          <g class="hang">
+            <ellipse class="glow" cx="22" cy="62" rx="20" ry="14" filter="url(#lamp-blur)"/>
+            <rect class="shade" x="19" y="33" width="6" height="5" rx="1.5"/>
+            <path class="shade" d="M9 52 C9 43 14.5 37 22 37 C29.5 37 35 43 35 52 Z"/>
+            <circle class="bulb" cx="22" cy="54" r="4.5"/>
+          </g>
+          </g>
+          <defs><filter id="lamp-blur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+        </svg>
+      </button>
+      <div class="hero-text">
+      <img class="portrait" src="linkedin.png" alt="Alain Halbouny" width="88" height="88">
+      <h1>Hi, I'm Alain.</h1>
+      <p class="lede">I'm a mechanical engineer from McGill. By day I coordinate MEP systems for construction in Cairo; the rest of the time I'm building IQASE, a phone accessory company, and the software behind my work with AI agents.</p>
+      <p class="facts">Cairo, Egypt · Egyptian-French · UAE resident · Canada work permit · French, English, Arabic</p>
+      <div class="ctas">
+        <a class="btn primary" href="#contact">Get in touch <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn" href="cv/Alain_Halbouny_CV.pdf" download>Download CV <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+        <a class="btn" href="https://www.linkedin.com/in/alain-halbouny" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-      <p class="lede">MEP engineer at Rowad in Cairo and co-founder of IQASE. I design hardware and build the software around it with AI.</p>
-      <div class="links">
-        <a class="cv" href="cv/Alain_Halbouny_CV.pdf" download>CV</a>
-        <a href="mailto:alainhalbouny@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/alain-halbouny" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://wa.me/15144431307" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="scroll-cue" href="#rowad">See what I'm working on <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
       </div>
-    </header>
+      <figure class="hero-photo"><img src="linkedin.png" alt="" width="420" height="420"></figure>
+    </div>
+  </section>
 
-    <section>
-      <h2>Experience</h2>
-      <ul class="list">
-        <li>
-          <button class="item-head" type="button" aria-expanded="false" aria-controls="p1">
-            <span class="t"><span class="wt"><span class="ghost" aria-hidden="true">MEP Engineer</span><span class="live">MEP Engineer</span></span> <span class="org">· Rowad Modern Engineering</span></span><time>2026 – now</time><svg class="plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            <span class="sum">Arena pre-construction, MEP site work, and EGP 10M recovered from idle stock.</span>
-          </button>
-          <div class="panel" id="p1"><div><div class="panel-in">
-            <ul><li>Pre-construction of a large indoor multipurpose arena: MEP planning, design coordination, procurement and submittal review.</li><li>Site work across HVAC, fire-fighting, plumbing and electrical: inspections, QC, commissioning and handover.</li><li>Aging material recovery: 1,400 SKUs idle in the main warehouse. EGP 10M recovered from the first 20%, twice book value, through scrap sales, site use and supplier returns.</li><li>Built the multi-user web app that runs it with Claude: inventory, QC, decisions, audit trail and dashboards. 1,600+ commits in 6 weeks with an AI agent workflow; live ERP data and a company-wide rollout next.</li><li>Member of the Supply Chain Committee.</li></ul><div class="stage" role="img" aria-label="The material recovery app: each idle item gets a decision, to site, scrap or return, and the recovered total reaches EGP 10M.">
-            <div class="win">
-              <div class="win-bar"><i></i><i></i><i></i><span>Aging stock</span></div>
-              <div class="win-body">
-                <div class="win-rows"><div class="r"><div class="bar" style="width:62%"></div><div class="bar" style="width:70%"></div><span class="chip">To site</span></div><div class="r"><div class="bar" style="width:45%"></div><div class="bar" style="width:50%"></div><span class="chip scrap">Scrap</span></div><div class="r"><div class="bar" style="width:72%"></div><div class="bar" style="width:60%"></div><span class="chip">Return</span></div><div class="r"><div class="bar" style="width:54%"></div><div class="bar" style="width:80%"></div><span class="chip">To site</span></div><div class="r"><div class="bar" style="width:48%"></div><div class="bar" style="width:55%"></div><span></span></div></div>
-                <div class="win-total">
-                  <span class="lbl">Recovered</span>
-                  <span class="num"><span class="cur">EGP</span><span class="digits"><span class="dg"><span data-to="1"><b>0</b><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b><b>7</b><b>8</b><b>9</b></span></span><span class="dg"><span data-to="10"><b>0</b><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b><b>7</b><b>8</b><b>9</b><b>0</b></span></span><span>M</span></span></span>
-                  <span class="sub">First 20% of 1,400 SKUs, 2× book value</span>
-                </div>
+  <section class="chapter" id="rowad">
+    <div class="wrap">
+      <div class="ch-head"><h2>Construction, and the stock nobody was using</h2>
+      <p class="meta">MEP Engineer · Rowad Modern Engineering · Cairo · Feb 2026 – now</p></div>
+      <div class="ch-body">
+        <p>I rotate between site and headquarters, supporting senior engineers across disciplines in a fast-paced construction environment.</p>
+        <p>In pre-construction for a large indoor multipurpose arena, I work on MEP planning, design coordination, procurement and submittal review: reading drawings, specs, submittals and contracts, and keeping consultants, contractors and suppliers aligned.</p>
+        <p>On site, I cover HVAC, fire-fighting, plumbing and electrical: inspections, quality control, commissioning and handover.</p>
+      <h3>Aging material recovery</h3>
+      <p class="meta">Aug 2026 – now</p>
+        <p>The company's main warehouse held 1,400 SKUs that had been sitting idle. I started with the data: the ERP records were messy, so I cleaned them up with physical counts and on-site brand checks alongside the warehouse staff.</p>
+        <p>Then I set up QC inspections to decide, item by item, whether to scrap it, send it to a site or return it to the supplier, and matched what was left to requests from active sites.</p>
+      <div class="stats"><div><b>EGP 10M</b><span>recovered so far</span></div><div><b>2×</b><span>the book value</span></div><div><b>20%</b><span>of items handled</span></div><div><b>1,400</b><span>idle SKUs</span></div></div>
+      <div class="stage" role="img" aria-label="The material recovery app: each idle item gets a decision, to site, scrap or return, and the recovered total reaches EGP 10M.">
+          <div class="win">
+            <div class="win-bar"><i></i><i></i><i></i><span>Aging stock</span></div>
+            <div class="win-body">
+              <div class="win-rows"><div class="r"><div class="bar" style="width:62%"></div><div class="bar" style="width:70%"></div><span class="chip">To site</span></div><div class="r"><div class="bar" style="width:45%"></div><div class="bar" style="width:50%"></div><span class="chip scrap">Scrap</span></div><div class="r"><div class="bar" style="width:72%"></div><div class="bar" style="width:60%"></div><span class="chip">Return</span></div><div class="r"><div class="bar" style="width:54%"></div><div class="bar" style="width:80%"></div><span class="chip">To site</span></div><div class="r"><div class="bar" style="width:48%"></div><div class="bar" style="width:55%"></div><span></span></div></div>
+              <div class="win-total">
+                <span class="lbl">Recovered</span>
+                <span class="num"><span class="cur">EGP</span><span class="digits"><span class="dg"><span data-to="1"><b>0</b><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b><b>7</b><b>8</b><b>9</b></span></span><span class="dg"><span data-to="10"><b>0</b><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b><b>7</b><b>8</b><b>9</b><b>0</b></span></span><span>M</span></span></span>
+                <span class="sub">First 20% of 1,400 SKUs, 2× book value</span>
               </div>
             </div>
           </div>
-          </div></div></div>
-        </li>
-        <li>
-          <button class="item-head" type="button" aria-expanded="false" aria-controls="p2">
-            <span class="t"><span class="wt"><span class="ghost" aria-hidden="true">Co-Founder</span><span class="live">Co-Founder</span></span> <span class="org">· IQASE</span></span><time>2025 – now</time><svg class="plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            <span class="sum">Phone accessories, from CAD and manufacturing to market.</span>
-          </button>
-          <div class="panel" id="p2"><div><div class="panel-in">
-            <ul><li>Designed the products and production-ready CAD; prototyping a new line.</li><li>Managing manufacturing with suppliers in China; the mold for the first run is being cut.</li><li>Built the financial model (unit cost, pricing, margins) and run the budget and P&amp;L.</li><li>Leading go-to-market across MENA: branding, digital marketing, distribution.</li></ul>
-          </div></div></div>
-        </li>
-      </ul>
-      <p class="note"><b>Earlier:</b> V12 F1 Store, Montreal (2023) · GVI, Costa Rica (2019) · ABB &amp; GTAT, Cairo (2019) · GoPro at ABM, Dubai (2017)</p>
-    </section>
+        </div>
+        <p>To run it, I built a multi-user web app with Claude: inventory, QC records, decisions, audit trail and dashboards. An AI agent workflow develops and tests it, and shipped 1,600+ commits in 6 weeks.</p>
+        <p>Live ERP data is being integrated now, ahead of a company-wide rollout and a mobile app. I'm also a member of the Supply Chain Committee, working on inventory, logistics and procurement strategy.</p>
+      <p class="nudge"><a href="#contact">Sitting on idle stock or a process that needs a better tool? Tell me about it <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+      </div>
+    </div>
+  </section>
 
-    <section>
-      <h2>Projects</h2>
-      <ul class="list">
-        <li>
-          <button class="item-head" type="button" aria-expanded="false" aria-controls="p3">
-            <span class="t"><span class="wt"><span class="ghost" aria-hidden="true">Laser-Powered Rocket</span><span class="live">Laser-Powered Rocket</span></span></span><time>2024</time><svg class="plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            <span class="sum">Laser thermal propulsion rig: 50 bar, 15,000 K plasma, measurable thrust.</span>
-          </button>
-          <div class="panel" id="p3"><div><div class="panel-in">
-            <ul><li>Aluminum ionization chamber rated for 50 bar, run on a 350&nbsp;W continuous laser for up to 30&nbsp;s.</li><li>First-principles heat transfer study for the plasma core: heat sinks and regenerative cooling.</li><li>DFMA CAD and GD&amp;T drawings in SolidWorks; led prototyping and machining.</li><li>Delivered in 6 months on budget; passed structural tests and produced thrust.</li></ul>
-          </div></div></div>
-        </li>
-        <li>
-          <button class="item-head" type="button" aria-expanded="false" aria-controls="p4">
-            <span class="t"><span class="wt"><span class="ghost" aria-hidden="true">Machine Learning</span><span class="live">Machine Learning</span></span></span><time>2025 – now</time><svg class="plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            <span class="sum">Neural network from scratch in NumPy; now a small transformer.</span>
-          </button>
-          <div class="panel" id="p4"><div><div class="panel-in">
-            <ul><li>Multi-layer perceptron written from scratch in NumPy, trained on MNIST handwritten digits.</li><li>Now building a small transformer language model to learn attention from the ground up.</li></ul>
-          </div></div></div>
-        </li>
-        <li>
-          <button class="item-head" type="button" aria-expanded="false" aria-controls="p5">
-            <span class="t"><span class="wt"><span class="ghost" aria-hidden="true">Transmission Box</span><span class="live">Transmission Box</span></span></span><time>2022</time><svg class="plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            <span class="sum">AGMA spur gearbox for a small aircraft.</span>
-          </button>
-          <div class="panel" id="p5"><div><div class="panel-in">
-            <ul><li>Double-reduction spur gear transmission to the AGMA standard.</li><li>Force, stress and fatigue analysis; shafts, bearings and keys sized over their life.</li><li>Iterated the design with Python scripts and custom spreadsheets.</li></ul>
-          </div></div></div>
-        </li>
-        <li>
-          <button class="item-head" type="button" aria-expanded="false" aria-controls="p6">
-            <span class="t"><span class="wt"><span class="ghost" aria-hidden="true">Structural Bracket</span><span class="live">Structural Bracket</span></span></span><time>2022</time><svg class="plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            <span class="sum">FEA-optimized acrylic bracket in Abaqus.</span>
-          </button>
-          <div class="panel" id="p6"><div><div class="panel-in">
-            <ul><li>Lightweight 2D acrylic bracket for maximum strength at a target stiffness.</li><li>FEA in Abaqus calibrated with material test data; DXF files for laser cutting.</li></ul>
-          </div></div></div>
-        </li>
-      </ul>
-    </section>
+  <section class="chapter" id="iqase">
+    <div class="wrap">
+      <div class="ch-head"><h2>A phone accessory startup, from CAD to market</h2>
+      <p class="meta">Co-Founder · IQASE · Oct 2025 – now</p></div>
+      <div class="ch-body">
+      <p>I co-founded IQASE to take products from concept to market, across engineering, manufacturing, sales, marketing and distribution.</p>
+      <dl class="rows">
+          <div class="row"><dt>Design</dt><dd>I designed the products and their production-ready CAD models, and I'm prototyping a new product line now.</dd></div>
+          <div class="row"><dt>Manufacturing</dt><dd>I manage manufacturing with suppliers in China. The mold for the first production run is being cut.</dd></div>
+          <div class="row"><dt>Business</dt><dd>I built the financial and profit models (unit cost, pricing, margins) and manage the budget and P&amp;L.</dd></div>
+          <div class="row"><dt>Go-to-market</dt><dd>I lead branding, digital marketing and distribution across MENA.</dd></div>
+          <div class="row"><dt>AI</dt><dd>AI is part of how we work: Claude, Lovable and Higgsfield for marketing, CAD, finance and documentation.</dd></div>
+      </dl>
+      <p class="nudge"><a href="#contact">Want to talk manufacturing, or follow the launch? Get in touch <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+      </div>
+    </div>
+  </section>
 
-    <section>
-      <h2>Education</h2>
-      <ul class="list">
-        <li>
-          <button class="item-head" type="button" aria-expanded="false" aria-controls="p7">
-            <span class="t"><span class="wt"><span class="ghost" aria-hidden="true">B.Eng. Mechanical Engineering</span><span class="live">B.Eng. Mechanical Engineering</span></span> <span class="org">· McGill University</span></span><time>2020 – 2025</time><svg class="plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            <span class="sum">GPA 3.6, two scholarships.</span>
-          </button>
-          <div class="panel" id="p7"><div><div class="panel-in">
-            <ul><li>Professor Bill Williams Memorial and John Howard Ambrose Scholarships, 2020–2021.</li><li>Coursework: thermodynamics, mechanical design, fluid mechanics, DFMA, GD&amp;T, heat transfer, subsonic aerodynamics.</li></ul>
-          </div></div></div>
-        </li>
-      </ul>
-    </section>
+  <section class="chapter" id="projects">
+    <div class="wrap">
+      <div class="ch-head"><h2>Things I've built</h2>
+      <p class="meta">Team and personal projects, McGill and after</p></div>
+      <div class="ch-body">
+      <article class="proj">
+        <h3>Laser-powered rocket</h3>
+        <p class="meta">Team project · Nov 2023 – Apr 2024</p>
+        <div class="stats"><div><b>50 bar</b><span>chamber rating</span></div><div><b>350 W</b><span>continuous laser</span></div><div><b>15,000 K</b><span>plasma core</span></div><div><b>6 months</b><span>on time, on budget</span></div></div>
+        <p>A fully functional laser thermal propulsion test apparatus for research. I designed the aluminum ionization chamber, rated for 50 bar with a 350 W continuous laser running for up to 30 seconds.</p>
+        <p>The hard part was heat. A first-principles heat transfer study sized the heat sinks and regenerative cooling around a 15,000 K plasma core. I made the production-ready DFMA CAD models, GD&amp;T drawings and assemblies in SolidWorks, and led 3D printing, prototyping and high-precision manufacturing of the main components in-house at McGill.</p>
+        <p>I also managed the budget and procurement of outsourced parts. We delivered on a tight 6-month timeline, within budget, passed structural integrity tests and produced measurable thrust.</p>
+      </article>
+      <article class="proj">
+        <h3>Machine learning from first principles</h3>
+        <p class="meta">Personal project · May 2025 – ongoing</p>
+        
+        <p>I build machine learning models from scratch to understand how they really work. I implemented a multi-layer perceptron in NumPy to classify the MNIST handwritten digits, without a framework.</p>
+        <p>Now I'm developing a small transformer-based language model to explore foundational NLP and attention mechanisms. It sits alongside the Machine Learning Specialization from Stanford.</p>
+      </article>
+      <article class="proj">
+        <h3>Auxiliary transmission box</h3>
+        <p class="meta">Team project · Mar – Apr 2022</p>
+        
+        <p>A double-reduction spur gear transmission for a small aircraft, to the AGMA standard. We sized a compact gear set to hit the required reduction ratio under strict dimensional constraints, then ran AGMA force, stress and fatigue analysis so the gears would last.</p>
+        <p>Shafts were engineered with free-body, shear and bending moment diagrams; bearings and keys were selected for fit and load capacity over their lifecycle. Python scripts and custom spreadsheets drove each design iteration.</p>
+      </article>
+      <article class="proj">
+        <h3>Structural bracket</h3>
+        <p class="meta">Team project · Sep – Dec 2022</p>
+        
+        <p>A lightweight 2D acrylic bracket designed for maximum strength at a target stiffness. FEA in Abaqus, calibrated with material test data, guided every change.</p>
+        <p>I optimized a triangular mesh within a 1,000-node limit by focusing on the critical stress areas, and refined the geometry to cut weight while keeping its structural integrity. The final CAD and DXF files from SolidWorks went straight to the laser cutter.</p>
+      </article>
+      </div>
+    </div>
+  </section>
 
-    <section>
-      <h2>Skills</h2>
-      <p class="plain"><b>Engineering:</b> SolidWorks, Mastercam, Abaqus, DFMA, GD&amp;T, CNC, 3D printing</p>
-      <p class="plain"><b>Software:</b> Python, MATLAB, AI agent workflows (Claude)</p>
-      <p class="plain"><b>Languages:</b> French, English, Arabic</p>
-    </section>
-  </main>
+  <section class="chapter" id="background">
+    <div class="wrap">
+      <div class="ch-head"><h2>Where I come from</h2>
+      <p class="meta">Education, earlier work and the tools I use</p></div>
+      <div class="ch-body">
+      <h3 class="first">Education</h3>
+      <p><b>B.Eng. Mechanical Engineering, McGill University</b><br><span class="muted">Montreal · Sep 2020 – Feb 2025 · GPA 3.6</span></p>
+      <p>Awarded the Professor Bill Williams Memorial and John Howard Ambrose Scholarships in 2020–2021. Coursework in thermodynamics, mechanical and conceptual design, fluid mechanics, DFMA, GD&amp;T, numerical methods, dynamics, mechanics of deformable solids, electric machinery, heat transfer and subsonic aerodynamics.</p>
+      <p><b>Certificates:</b> Machine Learning Specialization (Stanford) · KDB+/q developer level 3 (Kx)</p>
+      <h3>Earlier</h3>
+      <dl class="rows stacked">
+          <div class="row"><dt>V12 Trackside F1 Store, Formula 1 Grand Prix<span>Montreal · Jun 2023</span></dt><dd>Sold merchandise at the 2023 Montreal Grand Prix: diverse crowds, brand promotion and inventory in a fast-paced, high-energy setting.</dd></div>
+          <div class="row"><dt>GVI, supervised voluntary work<span>Quepos, Costa Rica · Jul 2019</span></dt><dd>Helped build a recreation and learning center for underprivileged children on the island of El Cocal. Teamwork and communication were what got it done.</dd></div>
+          <div class="row"><dt>ABB and GT Advanced Technologies<span>Cairo · Jul 2019</span></dt><dd>At ABB, hands-on exposure to electrical engineering projects, project management and supply chain operations across departments. At GTAT, intensive training on solar energy and semiconductor materials.</dd></div>
+          <div class="row"><dt>GoPro at ABM, internship<span>Dubai · Feb 2017</span></dt><dd>With the tech team of what was then the leading GoPro distributor in MENA and the GCC: advertising, market research, technical support, maintenance and inventory.</dd></div>
+      </dl>
+      <h3>Tools</h3>
+      <dl class="rows">
+          <div class="row"><dt>Engineering</dt><dd>SolidWorks (CAD), Mastercam (CAM), Abaqus (FEA)</dd></div>
+          <div class="row"><dt>Manufacturing and design</dt><dd>CNC machining, 3D printing, rapid prototyping, DFMA, GD&amp;T</dd></div>
+          <div class="row"><dt>Software</dt><dd>Python, MATLAB, Claude (TypeScript, Next.js, React, PostgreSQL, Docker, Git), Higgsfield, Microsoft Office</dd></div>
+          <div class="row"><dt>AI development</dt><dd>Apps and websites, workflow automation with AI agents, content creation, AI-assisted CAD</dd></div>
+          <div class="row"><dt>Languages</dt><dd>French, English and Arabic, fluent; Spanish, basic</dd></div>
+      </dl>
+      <h3>Off the clock</h3>
+      <p>Basketball, tennis, padel and skiing. Photography and video editing. The stock market, and whatever AI does next.</p>
+      </div>
+    </div>
+  </section>
 
-  <footer>© 2026 Alain Halbouny</footer>
+  <section class="chapter contact" id="contact">
+    <div class="wrap">
+      <div class="ch-head"><h2>Let's talk</h2></div>
+      <div class="ch-body">
+        <p>If you're hiring, building a product, or have a process that could use a sharper tool, I'd like to hear about it. A short message is plenty.</p>
+        <p>I'm based in Cairo, with residency in the UAE and a work permit in Canada, and I work in French, English and Arabic.</p>
+      <div class="mail">
+        <a class="address" href="mailto:alainhalbouny@gmail.com">alainhalbouny@gmail.com</a>
+        <button class="copy" type="button" data-email="alainhalbouny@gmail.com" data-copied="Copied" aria-label="Copy email">
+          <span class="swap"><svg class="ic a" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="ic b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span class="copy-label">Copy email</span>
+          <span class="sr" aria-live="polite"></span>
+        </button>
+      </div>
+      <div class="ctas">
+        <a class="btn primary" href="mailto:alainhalbouny@gmail.com">Email me <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn" href="https://www.linkedin.com/in/alain-halbouny" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://wa.me/15144431307" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn" href="cv/Alain_Halbouny_CV.pdf" download>Download CV <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+      </div>
+      </div>
+    </div>
+  </section>
+</main>
 
-</div>
+<footer><div class="wrap">© 2026 Alain Halbouny</div></footer>
+
 <script src="assets/main.js"></script>
 </body>
 </html>
