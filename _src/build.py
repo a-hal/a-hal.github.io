@@ -268,6 +268,14 @@ FR = dict(
 EMAIL = "alainhalbouny@gmail.com"
 
 
+def version(path):
+    """A short content hash, so browsers fetch a stylesheet or script again
+    whenever it changes instead of pairing a new page with an old file."""
+    import hashlib
+    with open(os.path.join(ROOT, path), "rb") as fh:
+        return hashlib.sha1(fh.read()).hexdigest()[:8]
+
+
 def attr(s):
     return s.replace('"', "&quot;")
 
@@ -309,7 +317,7 @@ def page(d):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{b}assets/style.css">
+  <link rel="stylesheet" href="{b}assets/style.css?v={version('assets/style.css')}">
 </head>
 <body>
 
@@ -439,7 +447,7 @@ def page(d):
 
 <footer><div class="wrap">{d['footer']}</div></footer>
 
-<script src="{b}assets/main.js"></script>
+<script src="{b}assets/main.js?v={version('assets/main.js')}"></script>
 </body>
 </html>
 """
