@@ -138,6 +138,9 @@
   (function reveal() {
     var blocks = document.querySelectorAll(".ch-head, .ch-body > *");
     if (!("IntersectionObserver" in window)) { blocks.forEach(function (b) { b.classList.add("in"); }); return; }
+    /* hide blocks only once this script is running, so a stale or failed
+       script can never leave the page blank */
+    root.classList.add("reveal-on");
     var io = new IntersectionObserver(function (entries) {
       var n = 0;
       entries.forEach(function (en) {

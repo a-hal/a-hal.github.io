@@ -211,8 +211,8 @@ footer { padding: 28px 0 40px; color: var(--muted); font-size: 13px; border-top:
 .hero-text > :nth-child(3) { animation-delay: 120ms; }
 .hero-text > :nth-child(n + 4) { animation-delay: 180ms; }
 .hero-photo { animation: rise 900ms var(--glide) 120ms both; }
-.js .ch-head, .js .ch-body > * { opacity: 0; transform: translateY(12px); }
-.js .ch-head.in, .js .ch-body > .in { opacity: 1; transform: none; transition: opacity 700ms var(--glide), transform 700ms var(--glide); }
+.reveal-on .ch-head, .reveal-on .ch-body > * { opacity: 0; transform: translateY(12px); }
+.reveal-on .ch-head.in, .reveal-on .ch-body > .in { opacity: 1; transform: none; transition: opacity 700ms var(--glide), transform 700ms var(--glide); }
 
 /* ---------- Illustration: the material recovery app (Stageshow rules) ---------- */
 .stage {
@@ -248,7 +248,7 @@ footer { padding: 28px 0 40px; color: var(--muted); font-size: 13px; border-top:
 .dg > span > b { display: block; height: 1.15em; font-variation-settings: inherit; }
 .win-total .sub { color: var(--muted); font-size: 12px; margin-top: 4px; }
 
-.js .stage:not(.played) .chip { opacity: 0; transform: scale(0.9); }
+.reveal-on .stage:not(.played) .chip { opacity: 0; transform: scale(0.9); }
 .stage .r:nth-child(2) .chip { transition-delay: 120ms; }
 .stage .r:nth-child(3) .chip { transition-delay: 240ms; }
 .stage .r:nth-child(4) .chip { transition-delay: 360ms; }
@@ -266,7 +266,7 @@ footer { padding: 28px 0 40px; color: var(--muted); font-size: 13px; border-top:
 
 @media (prefers-reduced-motion: reduce) {
   .hero-text > *, .hero-photo, .scroll-cue .ic { animation: none !important; }
-  .js .ch-head, .js .ch-body > * { transform: none !important; }
+  .reveal-on .ch-head, .reveal-on .ch-body > * { transform: none !important; }
   .pill, .chip, .btn, .swap .ic { transition-property: opacity, color, background-color !important; }
 }
 
