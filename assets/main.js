@@ -136,7 +136,7 @@
 
   /* ── blocks arrive once, as they first come into view ─────────── */
   (function reveal() {
-    var blocks = document.querySelectorAll(".chapter .wrap > *");
+    var blocks = document.querySelectorAll(".ch-head, .ch-body > *");
     if (!("IntersectionObserver" in window)) { blocks.forEach(function (b) { b.classList.add("in"); }); return; }
     var io = new IntersectionObserver(function (entries) {
       var n = 0;

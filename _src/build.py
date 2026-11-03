@@ -334,6 +334,7 @@ def page(d):
   <section class="hero" id="hero">
     <div class="wrap">
       {LAMP.format(label=attr(d['lamp']))}
+      <div class="hero-text">
       <img class="portrait" src="{b}linkedin.png" alt="Alain Halbouny" width="88" height="88">
       <h1>{d['hello']}</h1>
       <p class="lede">{d['lede']}</p>
@@ -344,13 +345,16 @@ def page(d):
         <a class="btn" href="https://www.linkedin.com/in/alain-halbouny" target="_blank" rel="noopener">LinkedIn</a>
       </div>
       <a class="scroll-cue" href="#rowad">{d['scroll']} {icon('down')}</a>
+      </div>
+      <figure class="hero-photo"><img src="{b}linkedin.png" alt="" width="420" height="420"></figure>
     </div>
   </section>
 
   <section class="chapter" id="rowad">
     <div class="wrap">
-      <h2>{r['title']}</h2>
-      <p class="meta">{r['meta']}</p>
+      <div class="ch-head"><h2>{r['title']}</h2>
+      <p class="meta">{r['meta']}</p></div>
+      <div class="ch-body">
 {paras(r['intro'])}
       <h3>{r['sub']}</h3>
       <p class="meta">{r['sub_meta']}</p>
@@ -359,34 +363,40 @@ def page(d):
       {stage(d['stage'])}
 {paras(r['app'])}
       {nudge(r['nudge'], '')}
+      </div>
     </div>
   </section>
 
   <section class="chapter" id="iqase">
     <div class="wrap">
-      <h2>{q['title']}</h2>
-      <p class="meta">{q['meta']}</p>
+      <div class="ch-head"><h2>{q['title']}</h2>
+      <p class="meta">{q['meta']}</p></div>
+      <div class="ch-body">
       <p>{q['intro']}</p>
       <dl class="rows">
 {iq_rows}
       </dl>
       {nudge(q['nudge'], '')}
+      </div>
     </div>
   </section>
 
   <section class="chapter" id="projects">
     <div class="wrap">
-      <h2>{p['title']}</h2>
-      <p class="meta">{p['meta']}</p>
+      <div class="ch-head"><h2>{p['title']}</h2>
+      <p class="meta">{p['meta']}</p></div>
+      <div class="ch-body">
 {nl.join(projects)}
+      </div>
     </div>
   </section>
 
   <section class="chapter" id="background">
     <div class="wrap">
-      <h2>{bg['title']}</h2>
-      <p class="meta">{bg['meta']}</p>
-      <h3>{bg['edu_h']}</h3>
+      <div class="ch-head"><h2>{bg['title']}</h2>
+      <p class="meta">{bg['meta']}</p></div>
+      <div class="ch-body">
+      <h3 class="first">{bg['edu_h']}</h3>
       <p><b>{bg['edu'][0]}</b><br><span class="muted">{bg['edu'][1]}</span></p>
       <p>{bg['edu'][2]}</p>
       <p><b>{bg['cert_h']}:</b> {bg['certs']}</p>
@@ -400,12 +410,14 @@ def page(d):
       </dl>
       <h3>{bg['fun_h']}</h3>
       <p>{bg['fun']}</p>
+      </div>
     </div>
   </section>
 
   <section class="chapter contact" id="contact">
     <div class="wrap">
-      <h2>{c['title']}</h2>
+      <div class="ch-head"><h2>{c['title']}</h2></div>
+      <div class="ch-body">
 {paras(c['ps'])}
       <div class="mail">
         <a class="address" href="mailto:{EMAIL}">{EMAIL}</a>
@@ -419,6 +431,7 @@ def page(d):
         <a class="btn" href="https://www.linkedin.com/in/alain-halbouny" target="_blank" rel="noopener">LinkedIn</a>
         <a class="btn" href="https://wa.me/15144431307" target="_blank" rel="noopener">WhatsApp</a>
         <a class="btn" href="{d['cv']}" download>{d['cv_label']} {icon('down')}</a>
+      </div>
       </div>
     </div>
   </section>

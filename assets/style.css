@@ -206,13 +206,13 @@ footer { padding: 28px 0 40px; color: var(--muted); font-size: 13px; border-top:
 
 /* ---------- Arrivals: each block rises once as it first comes into view ---------- */
 @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
-.hero .wrap > * { animation: rise 600ms var(--glide) both; }
-.hero .wrap > :nth-child(3) { animation-delay: 60ms; }
-.hero .wrap > :nth-child(4) { animation-delay: 120ms; }
-.hero .wrap > :nth-child(n + 5) { animation-delay: 180ms; }
-.hero .wrap > .lamp { animation: none; }
-.js .chapter .wrap > * { opacity: 0; transform: translateY(12px); }
-.js .chapter .wrap > .in { opacity: 1; transform: none; transition: opacity 700ms var(--glide), transform 700ms var(--glide); }
+.hero-text > * { animation: rise 600ms var(--glide) both; }
+.hero-text > :nth-child(2) { animation-delay: 60ms; }
+.hero-text > :nth-child(3) { animation-delay: 120ms; }
+.hero-text > :nth-child(n + 4) { animation-delay: 180ms; }
+.hero-photo { animation: rise 900ms var(--glide) 120ms both; }
+.js .ch-head, .js .ch-body > * { opacity: 0; transform: translateY(12px); }
+.js .ch-head.in, .js .ch-body > .in { opacity: 1; transform: none; transition: opacity 700ms var(--glide), transform 700ms var(--glide); }
 
 /* ---------- Illustration: the material recovery app (Stageshow rules) ---------- */
 .stage {
@@ -265,7 +265,60 @@ footer { padding: 28px 0 40px; color: var(--muted); font-size: 13px; border-top:
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero .wrap > *, .scroll-cue .ic { animation: none !important; }
-  .js .chapter .wrap > * { transform: none !important; }
+  .hero-text > *, .hero-photo, .scroll-cue .ic { animation: none !important; }
+  .js .ch-head, .js .ch-body > * { transform: none !important; }
   .pill, .chip, .btn, .swap .ic { transition-property: opacity, color, background-color !important; }
+}
+
+/* ---------- Wide screens: use the room ----------
+   The hero splits into words and a large portrait; every chapter puts its
+   title in a left column that stays in view while its story scrolls past. */
+.hero-photo { display: none; margin: 0; }
+.h3-first, h3.first { margin-top: 0; }
+@media (min-width: 1080px) {
+  body { font-size: 18px; }
+  .wrap { max-width: 1200px; padding: 0 48px; }
+  .topbar-in { max-width: 1200px; padding: 0 32px; }
+  .lamp { right: max(24px, calc(50% - 560px)); }
+
+  .hero { padding: 72px 0 56px; }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 72px; align-items: center; }
+  .hero .portrait { display: none; }
+  .hero-photo { display: block; justify-self: end; width: 100%; max-width: 420px; }
+  .hero-photo img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: center 18%;
+    border-radius: 50%; box-shadow: var(--shadow); }
+  h1 { font-size: clamp(56px, 5.4vw, 80px); margin-bottom: 22px; }
+  .lede { font-size: 22px; max-width: 30em; }
+  .facts { font-size: 15px; }
+
+  .chapter { padding: 120px 0 104px; }
+  .chapter .wrap { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 0 88px; align-items: start; }
+  .ch-head { position: sticky; top: calc(var(--bar-h) + 48px); }
+  .ch-head h2 { font-size: clamp(34px, 3vw, 44px); line-height: 1.1; }
+  .ch-head .meta { margin-bottom: 0; }
+  .ch-body { max-width: 720px; }
+  .ch-body > p { max-width: 40em; }
+  .ch-body h3:first-child, .ch-body .proj:first-child h3 { margin-top: 0; }
+  .stats { gap: 24px 32px; margin: 36px 0 40px; }
+  .stats b { font-size: 38px; }
+  .stage { height: 270px; margin: 12px 0 40px; }
+  .win { font-size: 14px; }
+  .win-body { grid-template-columns: 1fr 220px; }
+  .r { height: 42px; }
+  .num { font-size: 38px; }
+  .rows .row { grid-template-columns: 200px 1fr; gap: 4px 32px; }
+  .proj + .proj { margin-top: 72px; }
+  .ch-body h3 { font-size: 25px; letter-spacing: -0.015em; }
+
+  .contact .wrap { align-items: center; }
+  .contact .ch-head { position: static; }
+  .contact h2 { font-size: clamp(56px, 5.4vw, 80px); }
+}
+@media (min-width: 1500px) {
+  body { font-size: 19px; }
+  .wrap, .topbar-in { max-width: 1360px; }
+  .lamp { right: max(24px, calc(50% - 640px)); }
+  .chapter .wrap { grid-template-columns: minmax(0, 400px) minmax(0, 1fr); gap: 0 120px; }
+  .ch-body { max-width: 780px; }
+  .hero-photo { max-width: 480px; }
 }
